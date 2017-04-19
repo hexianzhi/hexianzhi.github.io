@@ -1,0 +1,47 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    /*  重要 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    min-height: 200px;
+    width: 400px;
+    background-color: #a1a1a1;
+
+    /*  如果不是 relative 单纯对两个圆角设置 relative 属性，那么 main 里面的文字会挤压着两个圆角*/
+    position: relative;
+    overflow: hidden;
+}
+
+.before, .after {
+    /*  重要 */
+    position: absolute;
+    border-radius: 50%;
+
+    width: 100px;
+    height: 100px;
+    background-color: #ffcc00;
+}
+
+.before {
+    left: -50px;
+    top: -50px;
+
+}
+
+.after {
+    left: 350px;
+    bottom: -50px;
+}
