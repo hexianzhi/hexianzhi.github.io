@@ -1,0 +1,55 @@
+/*
+    1. 总布局设置 align-items: flex-start 将元素设置向侧轴起点对齐。
+    2. middle 设置 flex-grow: 1 让其宽度自动扩展为三个元素中最大那个。
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px;
+    background: #eee !important;
+
+    /* 防止浏览器在宽度太小情况下，右边布局会移动到左边来*/
+    overflow: auto;
+
+    border: 2px solid #999;
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.container, .left, .right, .middle {
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #999;
+}
+
+/* 左边布局*/
+.left {
+    width: 200px;
+}
+
+.team_logo {
+    width: 80px;
+    height: 80px;
+}
+
+/* 右边布局*/
+.right {
+    width: 120px;
+}
+
+.teamer_logo {
+    height: 80px;
+    width: 80px;
+    margin: 20px;
+}
+
+/* 中间布局*/
+.middle {
+    flex-grow: 1;
+    margin: 0 20px 0 20px;
+}

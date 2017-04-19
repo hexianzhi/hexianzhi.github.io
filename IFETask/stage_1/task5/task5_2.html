@@ -1,0 +1,265 @@
+<!--这是第二种  width: calc + float方案，右边的登录会在上面。 -->
+
+<!--把之前在 html 中的 aside表格移动到最底下。再用 positon 就跟这个一样了？！ 待测试！-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link href="task5_2.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<header class="nav-header">
+    <nav>
+        <div class="nav-logo">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png"
+                 alt="logo">
+        </div>
+        <div class="nav-list">
+            <ul>
+                <li><a href="">导航链接一</a></li>
+                <li><a href="">导航链接二</a></li>
+                <li><a href="">导航链接三</a></li>
+                <li class="active"><a href="">导航链接四</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+</header>
+
+<div class="container">
+    <div class="container_left">
+        <article>
+            <h2>文章一级标题</h2>
+            <h3>文章二级标题</h3>
+
+            <span class="auther">文章作者</span>
+            <span class="aTime">文章发表时间</span>
+
+            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                <br/>换行了<br/>
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，<a href="http://ife.baidu.com">链接到ife</a>，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            </p>
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"
+                 alt="Baidu LOGO Here"/>
+            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                <br/>换行了<br/>
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，<a href="http://ife.baidu.com" target="_blank">在新窗口中打开链接到ife</a>，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            </p>
+        </article>
+        <article>
+            <h2>另一篇文章一级标题</h2>
+            <h3>另一篇文章二级标题</h3>
+
+            <span class="auther">文章作者</span>
+            <span class="aTime">文章发表时间</span>
+
+            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                <br/>换行了<br/>
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                这是一个很长的段落，<a href="http://ife.baidu.com">这有一个连接到ife</a>，这是一个很长的段落，
+                这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            </p>
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"
+                 alt="Baidu LOGO Here"/>
+            <nav>
+                <ul>
+                    <li>列表项目1</li>
+                    <li>列表项目2</li>
+                    <li>列表项目3</li>
+                </ul>
+            </nav>
+        </article>
+        <article>
+            <h3>图片</h3>
+            <ul class="bf_pic_ul" style="list-style-type: none">
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+                <li class="bf_pic_li">
+                    <p class="bf_pic_li_des">好看的图片</p>
+                    <img class="bf_pic_li_img"
+                         src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=527807552,571785368&fm=58"
+                         alt="one nice image here">
+                </li>
+            </ul>
+
+        </article>
+        <article>
+            <h2>最后一篇文章标题</h2>
+            <h3>二级文章标题</h3>
+
+            <span class="auther">文章作者</span>
+            <span class="aTime">文章发表时间</span>
+            <ol class="rate">
+                <li>排名1</li>
+                <li>排名2</li>
+                <li>排名3</li>
+            </ol>
+
+
+            <p>下面是一个表格</p>
+
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>金额</th>
+                    <th>动作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Prize1</td>
+                    <td>100</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr>
+                    <td>Prize2</td>
+                    <td>600</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr>
+                    <td>Prize3</td>
+                    <td>300</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td colspan="2">1000</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </article>
+
+    </div>
+
+    <aside>
+        <h2>这里以后是个侧栏</h2>
+        <form method="post">
+            <div>
+                <label class="tips">请输入邮箱地址</label>
+
+                <input type="text" placeholder="邮箱"/>
+                <p>邮箱地址请按要求格式输入</p>
+            </div>
+            
+            <div>
+                <label class="tips">请输入密码</label>
+                <input type="password" placeholder="密码"/>
+            </div>
+
+            <div>
+                <label class="tips">请重复输入密码</label>
+                <input type="password" placeholder="请重复输入密码"/>
+                <p>密码请为6-16位英文数字</p>
+            </div>
+        </form>
+
+        <form method="post">
+            <div>
+                <label class="tips">性别</label>
+                <!--value提交数据到服务器的值；checked默认被选中-->
+
+
+                <label class="selection"> <input type="radio" value="male" name="sex" checked="checked"/>男</label>
+
+                <label class="selection"> <input type="radio" value="female" name="sex"/>女</label>
+            </div>
+        </form>
+        <form method="post">
+            <div>
+                <label class="tips">城市</label>
+                <select class="selection_City">
+                    <option value="北京">北京</option>
+                    <option value="上海" selected="selected">上海</option>
+                    <option value="广州">广州</option>
+                </select>
+            </div>
+        </form>
+
+        <form method="post">
+            <div>
+                <label class="tips">爱好</label>
+                <input type="checkbox" value="sport" name="hobby"/>
+                <label class="selection">运动</label>
+                <input type="checkbox" value="art" name="hobby"/>
+                <label class="selection">艺术</label>
+                <input class="selection" type="checkbox" value="science" name="hobby"/>
+                <label class="selection">科学</label>
+            </div>
+        </form>
+        <form method="post">
+            <div>
+                <label class="tips">个人描述</label>
+
+                <textarea rows="6" cols="30">这是一个多行输入框( •̀ .̫ •́ )✧</textarea>
+            </div>
+        </form>
+        <input type="button" class="submitButton" value="确认提交"/>
+
+    </aside>
+</div>
+<footer>
+    <span>版权所有&copy; </span>
+</footer>
+
+</body>
+</html>

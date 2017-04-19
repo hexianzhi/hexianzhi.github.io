@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px;
+    background: #eee !important;
+    /* 防止浏览器在宽度太小情况下，右边布局会移动到左边来*/
+    min-width: calc(200px + 200px + 120px + 80px);
+    overflow: auto;
+    border: 2px solid #999;
+}
+
+.container, .left, .right, .middle {
+    padding: 20px;
+    background-color: white;
+
+    border: 2px solid #999;
+}
+
+/* 左边布局*/
+.left {
+    float: left;
+    width: 200px;
+
+}
+
+.team_logo {
+    float: left;
+    width: 80px;
+    height: 80px;
+
+}
+
+.team_name {
+    margin-top: 0;
+}
+
+/* 右边布局*/
+.right {
+    float: right;
+    width: 120px;
+}
+
+.teamer_logo {
+    height: 80px;
+    width: 80px;
+    margin: 20px;
+
+}
+
+/* 中间布局*/
+.middle {
+    margin: 0 180px 0 260px;
+}
+
+.middle h3 {
+    margin-top: 0;
+}
