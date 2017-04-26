@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tag-input {
+            margin: 20px;
+        }
+
+        .tag:hover {
+            background-color: red;
+        }
+
+        .tag {
+            background-color: red;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .interest-container {
+            margin: 20px;
+            display: inline-block;
+
+        }
+
+        .interest {
+            margin: 20px;
+            margin-top: 50px;
+            padding: 15px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+<label> Tag： <input id="tag-input" type="text" placeholder="输入tag，回车或空格来确定"></label>
+<div id="tag-content">
+
+</div>
+
+
+<div class="interest-container">
+    <label> <textarea id="interstInput" rows="5" cols="40"></textarea></label>
+    <button id="comfirm-interst">确认兴趣爱好</button>
+</div>
+
+<div id="interest-content">
+
+</div>
+
+
+</body>
+<script src="task21.js"></script>
+</html>

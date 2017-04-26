@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UI浮出层</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+        }
+
+        #main {
+            position: absolute;
+            left: 50%;
+            width: 100px;
+            height: 40px;
+            color: white;
+            background-color: #d45d5c;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        #dialog {
+            background-color: pink;
+            color: #fff;
+            z-index: 999;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 200px;
+            height: 100px;
+            display: none;
+        }
+
+        #mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.3;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mask"></div>
+<button id="main">浮出层</button>
+<div id="dialog"></div>
+
+
+</body>
+
+<script src="task37.js"></script>
+
+</html>

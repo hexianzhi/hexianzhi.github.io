@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联动</title>
+    <style>
+        body {
+            width: 700px;
+            margin: auto;
+            padding: 100px;
+        }
+
+        #school_social {
+            margin: 20px;
+            margin-left: 80px;
+            font-size: 18px;
+        }
+
+        .inSchool span {
+            width: auto;
+            height: 50px;
+        }
+
+        .select {
+            margin-left: 30px;
+            width: 160px;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+
+            color: #555;
+            border-radius: 4px;
+
+        }
+
+        .outSchool span, .input {
+            margin-left: 30px;
+            padding: 5px;
+            width: 160px;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="school_social" onchange="radioChange()">
+    <label> <input id="inSchoolRadio" type="radio" name="optionsRadios" checked>在校生</label>
+    <label> <input id="outSchoolRadio" type="radio" name="optionsRadios">非在校生</label>
+
+</div>
+
+<div id="select-container">
+    <div class="inSchool">
+
+        <span>学校</span>
+        <select class="select" id="select1" onchange="selectDistrict()">
+            <option value="bj">北京</option>
+            <option value="sh">上海</option>
+            <option value="hz">杭州</option>
+        </select>
+
+        <select class="select" id="select2">
+            <option value="pku">北京大学</option>
+            <option value="thu">清华大学</option>
+            <option value="bhu">北京航空航天大学</option>
+        </select>
+    </div>
+
+    <div class="outSchool hide">
+        <span>就业单位</span>
+        <input type="text" class="input">
+    </div>
+</div>
+</body>
+<script src="task31.js"></script>
+</html>

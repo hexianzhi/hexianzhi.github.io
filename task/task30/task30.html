@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task30</title>
+
+    <style>
+        .container div {
+
+        }
+
+        .container div label {
+            display: inline-block;
+            width: 35%;
+            text-align: right;
+            color: #000000;
+            font-size: 16px;
+        }
+
+        .input {
+            width: 150px;
+            margin-left: 10px;
+            border: 1px solid #938e8c;
+            border-radius: 3px;
+        }
+
+        .hint {
+            font-size: 14px;
+            margin-left: 35%;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        #fuckbtn {
+            width: 75px;
+            font-size: 16px;
+            padding: 10px;
+            color: white;
+            background-color: #2f79ba;
+            margin-left: 50%;
+        }
+    </style>
+</head>
+<body>
+<form class="container">
+    <div class="boxes" id="name">
+        <label>名称</label>
+        <input id="name-input" class="input" type="text">
+        <p id="name_hint" class="hint">名称</p>
+    </div>
+    <div class="boxes" id="password">
+        <label>密码 </label>
+        <input id="password-input" class="input" type="text">
+        <p id="password_hint" class="hint"></p>
+    </div>
+    <div class="boxes" id="confirm-password">
+        <label>密码确认 </label>
+        <input id="confirmPas-input" class="input" type="text">
+        <p id="confirmPas_hint" class="hint"></p>
+    </div>
+    <div class="boxes" id="email">
+        <label>邮箱 </label>
+        <input id="email-input" class="input" type="text">
+        <p id="email_hint" class="hint">
+
+        </p>
+    </div>
+    <div class="boxes" id="phone">
+        <label>手机 </label>
+        <input id="phone-input" class="input" type="text">
+        <p id="phone_hint" class="hint"></p>
+    </div>
+
+    <button id="fuckbtn">提交</button>
+</form>
+</body>
+<script src="task30.js"></script>
+</html>

@@ -37,11 +37,11 @@
     function getData() {
         var data = [];
         var source = document.getElementById("source");
-        for(var li = source.firstElementChild; li != null; li = li.nextElementSibling){   //遍历ul中的每个li子元素
+        for (var li = source.firstElementChild; li != null; li = li.nextElementSibling) {   //遍历ul中的每个li子元素
             var str = li.innerHTML;
             data.push(new Array(
-                str.substring(0,str.indexOf( "空气质量")),                           //get the city name
-                parseInt(str.substring(str.indexOf("<b>")+3, str.indexOf("</b>")))    //get the city dqi score
+                str.substring(0, str.indexOf("空气质量")),                           //get the city name
+                parseInt(str.substring(str.indexOf("<b>") + 3, str.indexOf("</b>")))    //get the city dqi score
             ));
         }
         return data;
@@ -54,7 +54,7 @@
      */
 
     function sortAqiData(data) {
-        return data.sort(function (d1,d2) {
+        return data.sort(function (d1, d2) {
             return d2[1] - d1[1];
         });
     }
@@ -68,7 +68,7 @@
         var chineseNumbers = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
 
         var res = document.getElementById("resort");
-        for(var index = 0; index < data.length; index++){
+        for (var index = 0; index < data.length; index++) {
 
             var li = document.createElement("li");
             li.appendChild(document.createTextNode("第" + chineseNumbers[index] + "名；" + data[index][0] + "空气质量：" + data[index][1]));

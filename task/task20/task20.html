@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javaScript基础练习1</title>
+    <style>
+
+        #data {
+            width: 100%;
+            margin: 15px;
+
+            display: flex;
+            align-items: flex-end;
+
+        }
+
+        .content {
+            color: white;
+            display: inline-block;
+            padding: 5px;
+            margin: 10px;
+            background-color: black;
+
+        }
+
+        .search_content {
+            display: inline-block;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<fieldset id="form">
+    <textarea rows="5" cols="50" id="text" placeholder="请输入内容，使用空格作为分隔符"></textarea>
+
+    <button id="add">插入文本</button>
+    <button id="search">查询文本</button>
+
+    <input id="num-input" type="text">
+</fieldset>
+<div id="data">
+
+</div>
+</body>
+<script src="task20.js"></script>
+</html>
