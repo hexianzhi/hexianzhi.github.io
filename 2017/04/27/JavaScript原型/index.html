@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
+<meta name="description" content="一、原型原型是 ECMAScript 实现继承的过程中产生的一个概念。 继承： java 中：指在已有的一个类基础上创建新类的过程。 ES：指在一个对象的基础上创建新对象的过程。原型指在这过程中作为基础的对象。 创建原型// 鸟对象 var bird = {     name: &amp;quot;bird&amp;quot;,      fly: function () {         console.lo">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="表单（待填">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/表单/index.html">
+<meta property="og:title" content="JavaScript原型">
+<meta property="og:url" content="http://yoursite.com/2017/04/27/JavaScript原型/index.html">
 <meta property="og:site_name" content="歌顿">
-<meta property="og:description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
-<meta property="og:updated_time" content="2017-04-24T16:33:05.305Z">
+<meta property="og:description" content="一、原型原型是 ECMAScript 实现继承的过程中产生的一个概念。 继承： java 中：指在已有的一个类基础上创建新类的过程。 ES：指在一个对象的基础上创建新对象的过程。原型指在这过程中作为基础的对象。 创建原型// 鸟对象 var bird = {     name: &amp;quot;bird&amp;quot;,      fly: function () {         console.lo">
+<meta property="og:updated_time" content="2017-04-27T15:46:17.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="表单（待填">
-<meta name="twitter:description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
+<meta name="twitter:title" content="JavaScript原型">
+<meta name="twitter:description" content="一、原型原型是 ECMAScript 实现继承的过程中产生的一个概念。 继承： java 中：指在已有的一个类基础上创建新类的过程。 ES：指在一个对象的基础上创建新对象的过程。原型指在这过程中作为基础的对象。 创建原型// 鸟对象 var bird = {     name: &amp;quot;bird&amp;quot;,      fly: function () {         console.lo">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/25/表单/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/27/JavaScript原型/"/>
 
 
 
 
 
-  <title> 表单（待填 | 歌顿 </title>
+  <title> JavaScript原型 | 歌顿 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/表单/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/27/JavaScript原型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="歌顿">
@@ -291,7 +291,7 @@
             
             
               
-                表单（待填
+                JavaScript原型
               
             
           </h1>
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T00:32:32+08:00">
-                2017-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T23:45:52+08:00">
+                2017-04-27
               </time>
             
 
@@ -342,63 +342,64 @@
       
 
       
-        <h3 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h3><ul>
-<li><p>提交表单</p>
-</li>
-<li><p>重置表单</p>
-</li>
-<li><p>表单字段</p>
-<ul>
-<li><p>共有的表单字段属性</p>
-</li>
-<li><p>共有的表单字段方法</p>
-</li>
-<li>共有的表单字段事件</li>
-</ul>
-</li>
-</ul>
-<h3 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h3><ul>
-<li><p>选择文本</p>
-<ul>
-<li><p>选择事件</p>
-</li>
-<li><p>取得选择的文本</p>
-</li>
-<li>选择部分文本</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>过滤输入</p>
-<ul>
-<li><p>屏蔽字符</p>
-</li>
-<li><p>操作剪贴板（跳过）</p>
-</li>
-</ul>
-</li>
-<li><p>自动切换焦点</p>
-</li>
-<li><p>H5约束验证 API</p>
-<ul>
-<li><p>必填字段</p>
-</li>
-<li><p>其他输入类型</p>
-</li>
-<li>检测有效性</li>
-<li>禁用验证</li>
-</ul>
-</li>
-</ul>
-<h3 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h3><ul>
-<li><p>选择选项</p>
-</li>
-<li><p>添加选项</p>
-</li>
-<li>移除选项</li>
-<li>移动和重拍选项</li>
-</ul>
-<h3 id="表单序列化"><a href="#表单序列化" class="headerlink" title="表单序列化"></a>表单序列化</h3><h3 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h3>
+        <h2 id="一、原型"><a href="#一、原型" class="headerlink" title="一、原型"></a>一、原型</h2><p><strong>原型</strong>是 ECMAScript 实现<strong>继承</strong>的过程中产生的一个概念。</p>
+<p><strong>继承</strong>：<br> java 中：<strong>指在已有的一个类基础上创建新类的过程</strong>。<br> ES：<strong>指在一个对象的基础上创建新对象的过程</strong>。<strong>原型指在这过程中作为基础的对象。</strong></p>
+<h3 id="创建原型"><a href="#创建原型" class="headerlink" title="创建原型"></a>创建原型</h3><pre><code>// 鸟对象
+var bird = {
+    name: &quot;bird&quot;,
+
+    fly: function () {
+        console.log(&quot;fly&quot;);
+    }
+}
+</code></pre><p>假设我们需要一个鹰对象，因为我们已经有一个鸟对象，因此可以从这个鸟对象继承信息。</p>
+<pre><code>//鹰对象
+var eagle = Object.create(bird);
+eagle.fly(); // fly
+</code></pre><p>通过 Object.create() 方法我们传入了<strong>鸟对象，作为鹰对象的原型来创建鹰对象</strong>，然后鹰对象中就产生了一个叫 _proto_ 的指针，这指针指向鸟对象。通过这个指针鹰对象就可以访问到鸟对象的 fly() 方法，当然编译器帮我们自动处理了这个指针访问的过程。</p>
+<p>但是对于原型来讲，prototype 属性是很重要的存在，下面来讲讲 prototype。</p>
+<h2 id="二、prototype-属性"><a href="#二、prototype-属性" class="headerlink" title="二、prototype 属性"></a>二、prototype 属性</h2><p>从一个例子讲 prototype 属性存在解决了什么问题。<br>现在有一个叫做 DOG 的构造函数，表示狗对象的原型。</p>
+<pre><code>function DOG(name){
+    this.name = name;
+}
+</code></pre><p>对这个构造函数使用new，就会生成一个狗对象的实例。</p>
+<pre><code>var dogA = new DOG(&apos;大毛&apos;);
+alert(dogA.name); // 大毛
+</code></pre><h3 id="new运算符的缺点"><a href="#new运算符的缺点" class="headerlink" title="new运算符的缺点"></a>new运算符的缺点</h3><p>但是，用构造函数生成实例对象，有一个缺点，那就是<strong>无法共享属性和方法。</strong></p>
+<p>比如，在DOG对象的构造函数中，设置一个实例对象的共有属性species。</p>
+<pre><code>function DOG(name){
+    this.name = name;
+    this.species = &apos;犬科&apos;;
+}
+</code></pre><p>然后，生成两个实例对象：</p>
+<pre><code>var dogA = new DOG(&apos;大毛&apos;);
+var dogB = new DOG(&apos;二毛&apos;);
+</code></pre><p>这两个对象的species属性是独立的，修改其中一个，不会影响到另一个。</p>
+<pre><code>dogA.species = &apos;猫科&apos;;
+alert(dogB.species); // 显示&quot;犬科&quot;，不受dogA的影响
+</code></pre><p>每一个实例对象，都有自己的属性和方法的副本。这不仅无法做到数据共享，也是极大的资源浪费。</p>
+<h3 id="prototype属性的引入"><a href="#prototype属性的引入" class="headerlink" title="prototype属性的引入"></a>prototype属性的引入</h3><p>考虑到这一点，Brendan Eich 决定为构造函数设置一个 prototype 属性。</p>
+<p>这个属性包含一个对象（以下简称” prototype 对象”），所有实例对象需要共享的属性和方法，都放在这个对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用 prototype 对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
+<p>还是以 DOG 构造函数为例，现在用 prototype 属性进行改写：</p>
+<pre><code>function DOG(name){
+    this.name = name;
+}
+DOG.prototype = { species : &apos;犬科&apos; };
+
+var dogA = new DOG(&apos;大毛&apos;);
+var dogB = new DOG(&apos;二毛&apos;);
+
+alert(dogA.species); // 犬科
+alert(dogB.species); // 犬科
+</code></pre><p>现在，species属性放在prototype对象里，是两个实例对象共享的。只要修改了prototype对象，就会同时影响到两个实例对象。</p>
+<pre><code>DOG.prototype.species = &apos;猫科&apos;;
+
+alert(dogA.species); // 猫科
+alert(dogB.species); // 猫科
+</code></pre><h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>由于所有的实例对象共享同一个 prototype 对象，那么从外界看起来，prototype 对象就好像是实例对象的原型，而实例对象则好像”继承”了 prototype 对象一样。</p>
+<p>这就是Javascript原型机制的设计思想。</p>
+
       
     </div>
 
@@ -434,18 +435,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/27/JavaScript原型/" rel="next" title="JavaScript原型">
-                <i class="fa fa-chevron-left"></i> JavaScript原型
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/23/事件类型-1/" rel="prev" title="事件类型总结">
-                事件类型总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/25/表单/" rel="prev" title="表单（待填">
+                表单（待填 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -557,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单的基础知识"><span class="nav-number">1.</span> <span class="nav-text">表单的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本框脚本"><span class="nav-number">2.</span> <span class="nav-text">文本框脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择框脚本"><span class="nav-number">3.</span> <span class="nav-text">选择框脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单序列化"><span class="nav-number">4.</span> <span class="nav-text">表单序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#富文本编辑"><span class="nav-number">5.</span> <span class="nav-text">富文本编辑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、原型"><span class="nav-number">1.</span> <span class="nav-text">一、原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建原型"><span class="nav-number">1.1.</span> <span class="nav-text">创建原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、prototype-属性"><span class="nav-number">2.</span> <span class="nav-text">二、prototype 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new运算符的缺点"><span class="nav-number">2.1.</span> <span class="nav-text">new运算符的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype属性的引入"><span class="nav-number">2.2.</span> <span class="nav-text">prototype属性的引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、总结"><span class="nav-number">3.</span> <span class="nav-text">三、总结</span></a></li></ol></div>
             
 
           </div>
