@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. 可维护性1.1 什么是可维护性可维护性的代码有一些特征：  可理解性——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释  直观性——代码中的东西一看就明白，无论操作多么复杂  可适应性——代码以一种数据上的变化不要求完全重写方法   可扩展性——在代码架构上考虑到在未来对核心功能扩展  可调试性——有地方出错，代码给予足够的信息直接地确定问题所在啊   1.2 代码约定以">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript最佳实践">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/JavaScript最佳实践/index.html">
+<meta property="og:site_name" content="歌顿">
+<meta property="og:description" content="1. 可维护性1.1 什么是可维护性可维护性的代码有一些特征：  可理解性——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释  直观性——代码中的东西一看就明白，无论操作多么复杂  可适应性——代码以一种数据上的变化不要求完全重写方法   可扩展性——在代码架构上考虑到在未来对核心功能扩展  可调试性——有地方出错，代码给予足够的信息直接地确定问题所在啊   1.2 代码约定以">
+<meta property="og:updated_time" content="2017-05-02T17:04:12.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript最佳实践">
+<meta name="twitter:description" content="1. 可维护性1.1 什么是可维护性可维护性的代码有一些特征：  可理解性——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释  直观性——代码中的东西一看就明白，无论操作多么复杂  可适应性——代码以一种数据上的变化不要求完全重写方法   可扩展性——在代码架构上考虑到在未来对核心功能扩展  可调试性——有地方出错，代码给予足够的信息直接地确定问题所在啊   1.2 代码约定以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/03/JavaScript最佳实践/"/>
+
+
+
+
+
+  <title> JavaScript最佳实践 | 歌顿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">歌顿</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/JavaScript最佳实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歌顿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歌顿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript最佳实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T01:03:49+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-可维护性"><a href="#1-可维护性" class="headerlink" title="1. 可维护性"></a>1. 可维护性</h1><h2 id="1-1-什么是可维护性"><a href="#1-1-什么是可维护性" class="headerlink" title="1.1 什么是可维护性"></a>1.1 什么是可维护性</h2><p>可维护性的代码有一些特征：</p>
+<ol>
+<li><p><strong>可理解性</strong>——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释</p>
+</li>
+<li><p><strong>直观性</strong>——代码中的东西一看就明白，无论操作多么复杂</p>
+</li>
+<li><p><strong>可适应性</strong>——代码以一种数据上的变化不要求完全重写方法 </p>
+</li>
+<li><p><strong>可扩展性</strong>——在代码架构上考虑到在未来对核心功能扩展</p>
+</li>
+<li><p><strong>可调试性</strong>——有地方出错，代码给予足够的信息直接地确定问题所在啊</p>
+</li>
+</ol>
+<h1 id="1-2-代码约定"><a href="#1-2-代码约定" class="headerlink" title="1.2 代码约定"></a>1.2 代码约定</h1><p>以下小节讨论代码约定的概论</p>
+<h2 id="1-2-1-可读性"><a href="#1-2-1-可读性" class="headerlink" title="1.2.1 可读性"></a>1.2.1 可读性</h2><ul>
+<li><p><strong>缩进</strong>：常见的缩进大小为4个空格，</p>
+</li>
+<li><p><strong>注释</strong>：</p>
+<ol>
+<li>函数和方法——每个函数或方法都应该包含一个注释，描述其目的和用于完成任务用到的算法。事先的假设也很重要，如参数代表什么，<strong>函数是否有返回值</strong>。</li>
+<li>大段代码——完成单个任务的多行代码应该在前面放一个描述任务的注释</li>
+<li>复杂算法——如果使用一种独特的方式解决问题，应该解释一下你是如何做的，不仅帮助其他浏览你代码的人，也帮助自己下次理解</li>
+<li>Hack——不要假设其他人在看代码能够理解 hack 所要应付的浏览器问题，直接写出。</li>
+</ol>
+</li>
+</ul>
+<h2 id="1-2-2-变量和函数命名"><a href="#1-2-2-变量和函数命名" class="headerlink" title="1.2.2 变量和函数命名"></a>1.2.2 变量和函数命名</h2><ol>
+<li><p>变量和函数应该使用合乎逻辑的名字，不用担心长度。长度问题可以通过后处理和压缩来缓解。</p>
+</li>
+<li><p>函数名应该以动词开始</p>
+</li>
+</ol>
+<h2 id="1-2-3-变量类型透明"><a href="#1-2-3-变量类型透明" class="headerlink" title="1.2.3 变量类型透明"></a>1.2.3 变量类型透明</h2><p>由于 js 中变量是松散类型，很容易忘记变量所应包含的数据类型。合适的命名方式可以一定程度上缓解这问题。</p>
+<p><strong>初始化</strong>。当定义一个变量后就应该被初始化为一个值，来暗示将来如何用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//通过初始化指定变量类型</div><div class="line">var found = flase;  //布尔型</div><div class="line">var count = -1;     //数字</div><div class="line">var name = &quot;&quot;;      //字符串</div><div class="line">var person = null;  //对象</div></pre></td></tr></table></figure></p>
+<h1 id="1-3-松散耦合"><a href="#1-3-松散耦合" class="headerlink" title="1.3 松散耦合"></a>1.3 松散耦合</h1><p>只要应用的某个部分过分依赖于另外一个部分，代码就是耦合过紧。因为 Web 应用设计的技术，有多种情况使它耦合过紧</p>
+<p><strong>1. 解耦 HTML/JavaScript:</strong><br>HTML 是数据，JavaScript 是行为，记住这两点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//将 HTML 紧密耦合到 JavaScript</div><div class="line">function insert(msg)&#123;</div><div class="line">    var container = document.getElementById(&quot;container&quot;);</div><div class="line">    container.innerHTML = &quot;&lt;div&gt; aa &lt;/div&gt;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 当使用上面这个例子，有一个页面布局问题，可能和动态创建的 HTML 没有被正确格式化有关。不过要定位这个错误非常困难，因为你可能一般先看到页面的源代码来查找那烦人的 HTML，但是没有找到，因为他是动态生成的<strong>。因此一般来说，应该避免在 JavaScript 中大量创建 HTML。一定要保持层次分离，这样可以很容易确定错误来源。</strong></p>
+<p>一般在页面中直接包含并隐藏标记，等整个页面渲染好之后，再用 javaScript 显示该标志，而非生成它。</p>
+<p><strong>2. 解耦 CSS/JavaScript</strong><br>最常见耦合的例子就是使用 JavaScript 来更改某些样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//CSS 对 JavaScript 的紧密耦合</div><div class="line">element.style.color = &quot;red&quot;;</div><div class="line">element.style.BackgroundColor = &quot;blue&quot;;</div></pre></td></tr></table></figure></p>
+<p>由于 CSS 主要负责页面的显示，当显示出现任何问题都应该只是查看 CSS 文件来解决，然而使用 JavaScript 来更改样式就出现了第二个可能已更改和检查的地方。结果 JavaScript 也负责了页面的显示。如果未来需要修改样式表，那 CSS 和 JavaScript 文件都要修改，这是一个噩梦。</p>
+<p>可以让耦合更松散，通过动态更改样式类而非特定的样式来实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//CSS 对 JavaScript 的松散耦合</div><div class="line">element.className = &quot;edit&quot;;</div></pre></td></tr></table></figure></p>
+<p><strong>3. 解耦应用逻辑/事件处理程序</strong><br>每个 Web 应用都有相当多的事件处理程序，然而很少能有将应用逻辑从事件处理程序中分离的。请看例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function handleKeyPress(event)&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    if(event.keyCode == 13)&#123;</div><div class="line">        var target = EventUtil.getTarget(event);</div><div class="line">        var value = pareInt(target.value);</div><div class="line">        if(value &gt; 5)&#123;</div><div class="line">            doucument.getElementById(&quot;msg&quot;).style.display = &quot;block&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个事件处理程序既包含应用逻辑，又进行事件的处理。这让问题变得双重性，一是如果没有预想的结果，那是因为事件处理程序没有被调用还是逻辑失败？二是如果一个后续的事件引发同样的应用逻辑，那还得复制功能代码。</p>
+<p>较好的改动是将应用逻辑和事件处理程序分离。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function handleValue(value)&#123;</div><div class="line">    value = parseInt（value);</div><div class="line">   if(value &gt; 5)&#123;</div><div class="line">            doucument.getElementById(&quot;msg&quot;).style.display = &quot;block&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function handleKeyPress(event)&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    if(event.keyCode == 13)&#123;</div><div class="line">        var target = EventUtil.getTarget(event);</div><div class="line">        handleValue(target.value);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意函数 handleValue 中没有任何东西会依赖于任何事件处理程序，它只是接收一个值，并根据该值处理。</p>
+<p>以下是应牢记的应用和业务逻辑之间松散耦合的几条原则：</p>
+<ul>
+<li><p>不要将 event 对象传给其他方法；只传来自 event 对象所需的数据</p>
+</li>
+<li><p>任何事件处理程序都应该处理事件，然后讲处理转交给应用逻辑</p>
+</li>
+<li>任何可以在应用层面的动作都应该可以在不执行任何事件处理程序下进行</li>
+</ul>
+<h1 id="1-4-编程实践"><a href="#1-4-编程实践" class="headerlink" title="1.4 编程实践"></a>1.4 编程实践</h1><p>书写可维护的 Js 并不仅仅关于如何格式化代码，还关系到代码做什么问题。在企业中往往有大量人员一起创作一个 Web 应用。这种情况下目标是是确保每个人所使用的浏览器环境都有一致和不变的规则。</p>
+<p><strong>1. 尊重对象所有权。（最重要）</strong></p>
+<p>它的意思是你不能修改不属于你的对象。简单来说，如果你不负责创建或维护某个对象、它的对象或者它的方法，那么你就不能对他们进行修改。更具体来说：</p>
+<ul>
+<li><p>不要为实例或原型添加属性；</p>
+</li>
+<li><p>不要为实例或原型添加方法；</p>
+</li>
+<li>不要重定义已存在的方法；</li>
+</ul>
+<p>著名的 Prototype JavaScript 库就出现过这种例子：它为 document 对象实现了 getElementsByClassName（） 方法，返回一个 Array 的实例并增加了一个 each() 方法。使用该库的人习惯<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.getElementsByClassName(&quot;msg&quot;).each();</div></pre></td></tr></table></figure></p>
+<p>….BOOM</p>
+<p>你可以通过以下方式为对象创建新的功能：</p>
+<ul>
+<li>创建包含所需功能的新对象，并用它与相关对象进行交互。</li>
+<li>创建自定义类型，继承需要修改的类型，为它添加功能。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/27/JavaScript原型/" rel="prev" title="JavaScript原型及原型链">
+                JavaScript原型及原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="歌顿" />
+          <p class="site-author-name" itemprop="name">歌顿</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-可维护性"><span class="nav-number">1.</span> <span class="nav-text">1. 可维护性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是可维护性"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-代码约定"><span class="nav-number">2.</span> <span class="nav-text">1.2 代码约定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-1-可读性"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1 可读性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-2-变量和函数命名"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2 变量和函数命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-3-变量类型透明"><span class="nav-number">2.3.</span> <span class="nav-text">1.2.3 变量类型透明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-松散耦合"><span class="nav-number">3.</span> <span class="nav-text">1.3 松散耦合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-编程实践"><span class="nav-number">4.</span> <span class="nav-text">1.4 编程实践</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">歌顿</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
