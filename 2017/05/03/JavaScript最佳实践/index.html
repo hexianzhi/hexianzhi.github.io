@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/03/JavaScript最佳实践/index.html">
 <meta property="og:site_name" content="歌顿">
 <meta property="og:description" content="1. 可维护性1.1 什么是可维护性可维护性的代码有一些特征：  可理解性——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释  直观性——代码中的东西一看就明白，无论操作多么复杂  可适应性——代码以一种数据上的变化不要求完全重写方法   可扩展性——在代码架构上考虑到在未来对核心功能扩展  可调试性——有地方出错，代码给予足够的信息直接地确定问题所在啊   1.2 代码约定以">
-<meta property="og:updated_time" content="2017-05-02T17:04:12.542Z">
+<meta property="og:updated_time" content="2017-05-03T01:34:48.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript最佳实践">
 <meta name="twitter:description" content="1. 可维护性1.1 什么是可维护性可维护性的代码有一些特征：  可理解性——其他人可以接受代码并理解它的意图和一般途径，无需原开发人员完整解释  直观性——代码中的东西一看就明白，无论操作多么复杂  可适应性——代码以一种数据上的变化不要求完全重写方法   可扩展性——在代码架构上考虑到在未来对核心功能扩展  可调试性——有地方出错，代码给予足够的信息直接地确定问题所在啊   1.2 代码约定以">
@@ -414,6 +414,27 @@
 <li>创建包含所需功能的新对象，并用它与相关对象进行交互。</li>
 <li>创建自定义类型，继承需要修改的类型，为它添加功能。</li>
 </ul>
+<p><strong>2. 避免全局量</strong></p>
+<p><strong>最多创建一个全局变量，让其他对象和函数存在其中。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//两个全局量——避免！</div><div class="line">var name = &quot;Nicholas&quot;;</div><div class="line">function sayName()&#123;</div><div class="line">    alert(name);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//一个全局量——推荐！</div><div class="line">var MyApplication = &#123;</div><div class="line">    name : &quot;Nicholas&quot;,</div><div class="line">    sayName : function()&#123;</div><div class="line">        alert(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>消除了前一段代码存在的问题。首先，变量 name 覆盖了 window.name 属性，可能与其他功能产生冲突；其次，它有主消除功能作用域之间的混淆。</p>
+<p>命名空间：单一的全局对象 xxx 作为一个容器，其中定义了其他对象。用这种方式将功能组合在一起的对象。<strong>用来确定每个人都统一使用的全局对象的名字，并且尽可能唯一。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//创建全局对象</div><div class="line">var Wrox = &#123;&#125;;</div><div class="line"></div><div class="line">//为 Professional JavaScript 创建命名空间</div><div class="line">Wrox.ProJs = &#123;&#125;;</div><div class="line"></div><div class="line">//将书中用到的对象附加上去</div><div class="line">Wrox.ProJs.EventUtil =  &#123;..&#125;;</div></pre></td></tr></table></figure></p>
+<p>避免了其他库的命名冲突。</p>
+<p><strong>3. 避免与 null 进行比较</strong></p>
+<p>直接将值与 null比较是使用过度的，并且由于不充分的类型检测导致错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sortArray(values)&#123;</div><div class="line">    if(values != null)&#123;</div><div class="line">        values.sort();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>这里的 if 语句有其他值可以通过，包括字符串、数字、它们会导致函数跑出错误。因为 JavaScript 不做任何自动的类型检查。</strong></p>
+<p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sortArray(values)&#123;</div><div class="line">    if( values  instanceof Array)&#123;</div><div class="line">        values.sort();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个版本可以阻止所有非法值，完全用不着 null。</p>
+<p>如果看到了与 null 比较代码，尝试使用以下技术替换：</p>
+<ul>
+<li><p>值应为引用类型，使用 instanceof　操作符检查其构造函数；</p>
+</li>
+<li><p>值应为基本类型，使用 typeof 检查其类型；</p>
+</li>
+<li>如果希望对象包含某个特定的方法名，则使用 typeof 操作符确保指定名字的方法存在于对象上。</li>
+</ul>
+<p>代码中 null 比较越少，越容易确定代码的目的。</p>
+<p><strong>4. 使用常量</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Constans = &#123;</div><div class="line">    Url: xxxx</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
