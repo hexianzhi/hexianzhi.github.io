@@ -157,13 +157,15 @@ header .menu_drop li:hover{
 }
 
 .row_4{
+
     margin-left: 200px;
-    bottom: 0;
+    bottom: -100%;
     position: absolute;
+    transition: bottom .3s cubic-bezier(0,0,0,1);
 }
-.row_4 img{
-    transition: bottom .25s cubic-bezier(0,0,0,1);
-}
+/*.row_4 img{*/
+    /*transition: bottom .25s cubic-bezier(0,0,0,1);*/
+/*}*/
 .text_small:hover{
     background-color:black;
     color: white;
