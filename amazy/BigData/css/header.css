@@ -1,0 +1,172 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+}
+
+body{
+    font-family: 微软雅黑;
+
+}
+
+
+/*导航栏*/
+header{
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    position: relative;
+    font-size: 15px;
+    color: #000;
+    z-index: 9999;
+}
+header .icon_container{
+    left: 100px;
+    position: absolute;
+    margin-left: 100px;
+    margin-top:30px;
+}
+
+
+header #product_name{
+    cursor: pointer;
+    position: absolute;
+    left: 350px;
+    border-left: 3px solid gainsboro;
+    padding-left: 30px;
+    margin-top:30px;
+    font-weight: bold;
+}
+
+/*主菜单*/
+header .menu{
+    cursor: pointer;
+    position: absolute;
+    left: 450px;
+    margin-left: 50px;
+    list-style: none;
+    font-weight: bold;
+}
+
+header .menu_item{
+    padding: 30px 15px 30px 15px;
+    float: left;
+    position: relative;
+    transition:background-color .3s cubic-bezier(0,0,0,1);
+}
+header .menu_item a{
+    color: #000;
+    text-decoration: none;
+}
+
+header .menu_item:hover{
+    background-color: #f5d341;
+}
+header .menu_item .menu_drop {
+    display: none;
+}
+header .menu_item:hover .menu_drop {
+    display: block;
+}
+header .header_LR{
+    height: 80px;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    right: 300px;
+
+}
+
+/* 登录注册*/
+header .header_LR a{
+    float:left;
+    padding:30px 15px 30px 15px;
+    transition:background-color .25s cubic-bezier(0,0,0,1);
+    color: #000;
+    text-decoration: none;
+}
+
+header .header_LR a:hover{
+    background-color: #f5d341;
+}
+
+/*主菜单的下拉菜单*/
+
+header .menu_drop{
+    display: block;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    width: 200px;
+}
+
+
+header .menu_drop li:nth-child(1){
+    margin: 30px 0 0 0;
+}
+
+header .menu_drop li{
+    background-color: #f5d341;
+    padding: 10px 0 10px 10px;
+}
+
+header .menu_drop li:hover{
+    background-color: #f6d958;
+}
+
+
+/******************************************导航栏结尾****************************************************************/
+
+
+.section_1{
+    background-image: url(https://powerbicdn.azureedge.net/cvt-9ea9c477d68915c36ed2634e534947539995dd8e33cf5176b3ae3c65c43e786a/pictures/pages/pbi-pattern.png),
+    linear-gradient(to top, rgb(255, 210, 13), rgb(242, 200, 17));
+    background-size: cover;
+    padding: 100px 0 0 0;
+    position: relative;
+    height: 780px;
+}
+.row::before, .row::after {
+    content: ' ';
+}
+
+.row{
+    color: #000;
+    text-align:center;
+    font-size: 48px;
+    line-height: 1.16;
+    letter-spacing: -.01em;
+
+}
+.text_super{
+    font-weight: bold;
+
+}
+.text_nomal{
+    margin: 0 30% 0 30%;
+    text-align:center;
+    font-size: 22px;
+    padding-top: 30px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.text_small{
+    display:  inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 10px;
+    border: 2px #000 solid;
+
+}
+
+.row_4{
+    margin-left: 200px;
+    bottom: 0;
+    position: absolute;
+}
+
