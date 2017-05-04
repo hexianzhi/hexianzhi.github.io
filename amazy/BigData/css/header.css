@@ -120,7 +120,7 @@ header .menu_drop li:hover{
 
 /******************************************导航栏结尾****************************************************************/
 
-
+/******第一个章节******/
 .section_1{
     background-image: url(https://powerbicdn.azureedge.net/cvt-9ea9c477d68915c36ed2634e534947539995dd8e33cf5176b3ae3c65c43e786a/pictures/pages/pbi-pattern.png),
     linear-gradient(to top, rgb(255, 210, 13), rgb(242, 200, 17));
@@ -169,4 +169,9 @@ header .menu_drop li:hover{
     bottom: 0;
     position: absolute;
 }
+.text_small:hover{
+    background-color:black;
+    color: white;
+}
 
+/******************************************第一个章节结尾****************************************************************/
