@@ -272,7 +272,7 @@ $(document).ready(function() {
 
     var maxCount = 12;
     var loadConnectionsBtn = $("#data_connections_operation");
-    var isLoadAll = false;
+    var isLoadAll = true;
     var lookAllConnections= $("#data_connections_operation_all");
     //假设我们的数据一开始能够占满两行！！！
     var data_connections = $(".data_connections");
