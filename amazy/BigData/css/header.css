@@ -7,13 +7,14 @@ body{
 
 /*导航栏*/
 header{
+
     /*width: 100%;*/
     height: 80px;
     background-color: white;
     position: relative;
     font-size: 15px;
     color: #000;
-    z-index: 9999;
+    z-index: 99;
 }
 header .icon_container{
     left: 100px;
@@ -163,12 +164,84 @@ header .menu_drop li:hover{
     position: absolute;
     transition: bottom .3s cubic-bezier(0,0,0,1);
 }
-/*.row_4 img{*/
-    /*transition: bottom .25s cubic-bezier(0,0,0,1);*/
-/*}*/
+.row_4 img{
+    transition: bottom .25s cubic-bezier(0,0,0,1);
+}
 .text_small:hover{
     background-color:black;
     color: white;
 }
 
 /******************************************第一个章节结尾****************************************************************/
+
+
+
+.section_2{
+    background-color: #f5d341;
+    margin-top: -25px;
+    padding: 5%;
+    height: 400px;
+    text-align: center;
+}
+
+#power_des_1{
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#power_des_2{
+    display: block;
+    font-size: 26px;
+    text-align: center;
+    padding: 0 10% 0 10%;
+}
+#power_des_3{
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+
+}
+#power_des_3 a{
+    padding-left:10px;
+    color: #000;
+    text-decoration: none;
+}
+
+#power_des_3 a:hover{
+    opacity: 0.4;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.3;
+    display: none;
+}
+
+#power_des_3_video_div{
+    z-index: 999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+
+
+
+
+
+
+
