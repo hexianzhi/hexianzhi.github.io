@@ -55,6 +55,244 @@ $(document).ready(function() {
         powerDesVideo.css("display","block");
     }
 
+
+
+
+    // 写加载数据源的 js 代码
+    // <div class = "data_connections_row">
+    //     <div class = "data_connections_item">
+    //           <img class = "data_item_img" src="img/access.png">
+    //              <p class = "data_item_name" > access</p>
+    //     </div>
+    // </div>
+    //
+
+    //模拟数据
+    var datasSource = [
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+        {
+            img: "img/access.png",
+            name : "access"
+        },
+
+    ];
+
+    function loadConnections(maxCount) {
+        var dataRow = "",dataItem = "",dataItemImg = "",dataItemName = "";
+        var nextDivCount = 5;
+
+        for(var index = 0; index < maxCount; index++){
+
+            if(index === 0){
+                dataRow = "<div class='data_connections_row'>";
+            }
+            dataItem += "<div class='data_connections_item'>";
+
+            var src = datasSource[index].img;
+            dataItemImg = "<img class='data_item_img'" + "src='" + src + "'>";
+
+            var name = datasSource[index].name;
+            dataItemName = "<p class='data_item_name'>" + name + "</p>";
+
+            dataItem += dataItemImg + dataItemName;
+            dataItem += "</div>";
+
+
+            // 如果只有一个数据的情况
+            if(index === 0 && index === (maxCount - 1)){
+                dataRow += dataItem +"</div>";
+                return dataRow;
+            }
+
+            // 最后一个数据了
+            if( index === (maxCount - 1)){
+                dataRow += dataItem + "</div>";
+                return dataRow;
+            }
+
+            // 如果是第六个数据了
+            if (index % nextDivCount === 0 && index != 0){
+                dataRow +=  dataItem + "</div>";
+                dataItem = "";
+
+                //如果第六个数据不是最后一个数据就填充新的 row，否则啥都不做等下一轮判断
+                if (index != (maxCount - 1)){
+                    dataRow += "<div class='data_connections_row'>";
+                    nextDivCount += 6;
+                }else {
+                    return dataRow;
+                }
+
+            }
+        }
+        return dataRow;
+
+    }
+
+
+
+    var maxCount = 12;
+    var loadConnectionsBtn = $("#data_connections_operation");
+    var isLoadAll = false;
+    var lookAllConnections= $("#data_connections_operation_all");
+    //假设我们的数据一开始能够占满两行！！！
+    var data_connections = $(".data_connections");
+    data_connections.html(loadConnections(12));
+
+    loadConnectionsBtn.click(function () {
+        if (isLoadAll){
+            data_connections.html(loadConnections(datasSource.length));
+            loadConnectionsBtn.html("显示更少");
+            lookAllConnections.css("display","block");
+            isLoadAll = false;
+        }else {
+            data_connections.html(loadConnections(12));
+            loadConnectionsBtn.html("显示更多");
+            lookAllConnections.css("display","none");
+            isLoadAll = true;
+        }
+
+    });
+
 });
 
 

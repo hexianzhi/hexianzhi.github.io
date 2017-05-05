@@ -239,9 +239,179 @@ header .menu_drop li:hover{
 }
 
 
+/******************************************第二个章节结尾****************************************************************/
+
+.section_3{
+    margin-top: -25px;
+    background-color: #000;
+    height: 500px;
+    color: #fff;
+}
+#power_meaning_title{
+    display: block;
+    padding: 80px 0 20px 0;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+.section_3_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+
+}
+
+/*
+ 神奇！如果对一个东西设置两次 border 是会叠加的。
+如果想内容没变化那就得对外容器设置 border 利用颜色值隐藏起来,再对内容器设置 border， perfect
+*/
+.power_meaning_bor{
+    margin: 0 20px 0 20px;
+    background-color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    border-left: 4px solid #333;
+    cursor: pointer;
+}
+/*这下面就有瑕疵了，重构肯定要弄这里*/
+.power_meaning{
+    padding: 20px;
+    height: 240px;
+    position: relative;
+    border-left: 4px solid #333;
+}
+.power_meaning img{
+    padding-bottom: 10px;
+}
+.power_meaning_bor:hover{
+    border-left: 4px solid #f5f72b  ;
+}
+.meaning_people{
+    color: #ecc11a;
+    font-size: 16px;
+}
+.meaning_des{
+    font-size: 16px;
+}
+.meaning_action{
+    font-size: 14px;
+    display: block;
+    position: absolute;
+    bottom: 20px;
+
+}
+/* 箭头 */
+.meaning_action span:before,
+.meaning_action span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 12px;
+    background: #fff;
+    border-radius: .3em;
+    right: -20%;
+    top: 30%;
+    transition: all .3s ease-in-out;
+}
+.meaning_action span:before{
+    transform:translate(0%, -50%) rotate(-45deg)
+}
+
+.meaning_action span:after {
+    transform:translate(0%, 0%) rotate(45deg);
+}
+
+.meaning_action:hover:before,
+.meaning_action:hover:after {
+    right: -30%;
+
+}
+
+/******************************************第三个章节结尾****************************************************************/
 
 
+.section_4{
+    background-color: #fff;
+    margin-top: -25px;
+    text-align: center;
+}
 
+.section_4 h1{
 
+    font-size: 30px;
+    color: #000;
+    padding-top: 30px;
+}
+.section_4 h5{
+    font-size: 16px;
 
+    margin: 15px 20% 0 20%;
+}
 
+.data_connections{
+    margin: 30px 10% 30px 10%;
+}
+.data_connections_row{
+    display: flex;
+    margin: 20px 0 20px 0;
+    align-content: center;
+    justify-content: center;
+}
+
+.data_connections_item{
+    display: inline-block;
+    cursor: pointer;
+    width: 180px;
+    height: 120px;
+    margin: 0 30px  0 30px;
+    text-align: center;
+    font-size: 16px;
+}
+.data_connections_item:hover .data_item_img{
+    opacity: 0.6;
+}
+.data_item_img{
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+}
+.data_item_name{
+    display: block;
+}
+.section_4 a{
+    margin-top: 50px;
+    display: block;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+
+}
+.section_4 a:hover{
+    text-decoration: underline;
+}
+
+#data_connections_operation_all{
+    display: none;
+}
+
+#data_connections_operation{
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+    border: 2px solid #000;
+    transition: background-color .1s ease-in-out;
+}
+
+#data_connections_operation:hover{
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+}
+
+/******************************************第四个章节结尾****************************************************************/
