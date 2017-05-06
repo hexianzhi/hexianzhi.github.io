@@ -508,24 +508,26 @@ header .menu_drop li:hover{
 }
 
 .user_cover .user_cover_vider_container{
-    display: inline-block;
+
     margin: 20px 0 20px 8%;
     cursor: pointer;
     width: 150px;
-    height: 60px;
+    height: auto;
     background-color: #f2c811;
     font-size: 16px;
     font-weight: bold;
     color: #000;
     text-align: center;
+    padding: 10px;
 }
 .user_cover .user_cover_vider_container img {
-    float: left;
-    padding: 20px 5px 0 10px;
+    /*display: inline-block;*/
+    /*padding: 5px 5px 0 10px;*/
 }
 .user_cover .user_cover_vider_container span {
     font-weight: bold;
-    padding: 20px 0 0 0;
+    /*display: inline-block;*/
+    /*margin: 10px 8px 0 10px;*/
 }
 
 
@@ -547,12 +549,40 @@ header .menu_drop li:hover{
 }
 
 
-
-
-
-
-
-
-
-
 /******************************************第五个章节结尾****************************************************************/
+
+.foot{
+    background-color: #f2f2f2;
+    height: 600px;
+    padding-top: 60px;
+    padding-left: 15%;
+
+
+}
+
+.foot ul{
+    list-style: none;
+    color: #000;
+
+    padding-left: 17px;
+    margin-bottom: 14px;
+    margin-left: 0;
+}
+.foot ul li{
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: list-item;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
