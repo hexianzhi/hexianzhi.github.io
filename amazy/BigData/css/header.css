@@ -217,7 +217,7 @@ header .menu_drop li:hover{
     opacity: 0.4;
 }
 
-#mask {
+.mask {
     position: fixed;
     top: 0;
     left: 0;
@@ -338,6 +338,7 @@ header .menu_drop li:hover{
     background-color: #fff;
     margin-top: -25px;
     text-align: center;
+    padding-bottom: 50px;
 }
 
 .section_4 h1{
@@ -415,3 +416,143 @@ header .menu_drop li:hover{
 }
 
 /******************************************第四个章节结尾****************************************************************/
+
+
+.section_5{
+    height: 780px;
+    /*margin-top: -15px;*/
+    background-color: #f2c811;
+    padding-top: 40px;
+}
+
+.section_5 h1{
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+.user{
+    position: relative;
+
+}
+.uesr_img{
+    background-image: url("https://powerbicdn.azureedge.net/cvt-3270d7c39dd75bde4c601fa2479ec40e5f55c8c09da7b3075fb2fa6c5c85421f/pictures/shared/fancy-tile/woman-surface-coffee.jpg");
+    height: 400px;
+    width: 470px;
+    position: relative;
+    background-size: cover;
+}
+.uesr_img h5{
+    position: absolute;
+    color: #f2c811;
+    font-size: 16px;
+    bottom: 25%;
+    left: 5%;
+
+    display: inline;
+}
+.uesr_img h3{
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    right: 10%;
+
+    display: inline;
+}
+
+.user_icon{
+    height: 60px;
+    width: 470px;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2)
+}
+
+.user_icon img{
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+}
+
+
+@media (min-width: 768px) {
+    .users_container{
+        margin: 50px 10% 50px 10%;
+    }
+
+}
+
+.user_cover{
+    position: absolute;
+    display: none;
+    height: 400px;
+    width: 470px;
+
+    top: 0;
+    left: 15px;
+
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+.user_cover h3{
+    padding: 20% 10% 0 8%;
+
+}
+
+.user_cover h5{
+    padding: 0px 0 20px 8%;
+}
+
+.user_cover .user_cover_vider_container{
+    display: inline-block;
+    margin: 20px 0 20px 8%;
+    cursor: pointer;
+    width: 150px;
+    height: 60px;
+    background-color: #f2c811;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+.user_cover .user_cover_vider_container img {
+    float: left;
+    padding: 20px 5px 0 10px;
+}
+.user_cover .user_cover_vider_container span {
+    font-weight: bold;
+    padding: 20px 0 0 0;
+}
+
+
+.user:hover .user_cover{
+    display: block;
+}
+.user:hover .uesr_img h5,.user:hover .uesr_img h3{
+    display: none;
+}
+
+
+.video_div{
+    z-index: 999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+/******************************************第五个章节结尾****************************************************************/
