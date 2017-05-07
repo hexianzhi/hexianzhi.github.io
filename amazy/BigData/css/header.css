@@ -447,7 +447,8 @@ header .menu_drop li:hover{
     font-size: 16px;
     bottom: 25%;
     left: 5%;
-
+    opacity: 1;
+    transition: opacity .5s;
     display: inline;
 }
 .uesr_img h3{
@@ -457,7 +458,8 @@ header .menu_drop li:hover{
     bottom: 8%;
     left: 5%;
     right: 10%;
-
+    opacity: 1;
+    transition: opacity .5s;
     display: inline;
 }
 
@@ -487,15 +489,15 @@ header .menu_drop li:hover{
 
 .user_cover{
     position: absolute;
-    display: none;
+
     height: 400px;
     width: 470px;
-
     top: 0;
     left: 15px;
 
     background-color: #fff;
-    opacity: 0.8;
+    transition: opacity .5s ;
+    opacity: 0;
 }
 
 .user_cover h3{
@@ -530,10 +532,13 @@ header .menu_drop li:hover{
     /*margin: 10px 8px 0 10px;*/
 }
 
-
 .user:hover .user_cover{
-    display: block;
+    opacity: 0.8;
 }
+.user_cover:hover .uesr_img h5,.user_cover:hover .uesr_img h3{
+    opacity: 0;
+}
+
 .user:hover .uesr_img h5,.user:hover .uesr_img h3{
     display: none;
 }
