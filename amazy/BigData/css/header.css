@@ -4,90 +4,109 @@ body{
 
 }
 
-
-/*导航栏*/
 header{
 
-    /*width: 100%;*/
+    z-index: 9999;
+}
+
+
+.navigation-fixed{
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 88888;
+}
+/*导航栏*/
+.navigation{
+    display: block;
+
     height: 80px;
     background-color: white;
-    position: relative;
+    /*position: relative;*/
     font-size: 15px;
+    z-index: 88888;
     color: #000;
-    z-index: 99;
+
 }
-header .icon_container{
-    left: 100px;
-    position: absolute;
-    margin-left: 100px;
+.navigation .icon_container{
+    float: left;
+    /*left: 100px;*/
+    /*position: absolute;*/
+    margin-left: 200px;
     margin-top:30px;
 }
 
 
-header #product_name{
+.navigation #product_name{
     cursor: pointer;
     position: absolute;
-    left: 350px;
     border-left: 3px solid gainsboro;
-    padding-left: 30px;
+    margin-left: 30px;
+    padding-left: 20px;
     margin-top:30px;
     font-weight: bold;
 }
 
 /*主菜单*/
-header .menu{
+.navigation .menu{
     cursor: pointer;
-    position: absolute;
-    left: 450px;
-    margin-left: 50px;
+    float: left;
+    /*position: absolute;*/
+    /*left: 450px;*/
+    margin-left: 150px;
     list-style: none;
     font-weight: bold;
 }
 
-header .menu_item{
+.navigation .menu_item{
     padding: 30px 15px 30px 15px;
+
     float: left;
     position: relative;
     transition:background-color .3s cubic-bezier(0,0,0,1);
 }
-header .menu_item a{
+.navigation .menu_item a{
     color: #000;
     text-decoration: none;
 }
 
-header .menu_item:hover{
+.navigation .menu_item:hover{
     background-color: #f5d341;
 }
-header .menu_item .menu_drop {
+.navigation .menu_item .menu_drop {
     display: none;
 }
-header .menu_item:hover .menu_drop {
+.navigation .menu_item:hover .menu_drop {
     display: block;
 }
-header .header_LR{
+.navigation .header_LR{
     height: 80px;
     cursor: pointer;
     font-weight: bold;
-    position: absolute;
-    right: 300px;
+    float: right;
+    margin-right: 200px;
+    /*position: absolute;*/
+    /*right: 300px;*/
 }
 
 /* 登录注册*/
-header .header_LR a{
+.navigation .header_LR a{
     float:left;
+
     padding:30px 15px 30px 15px;
     transition:background-color .25s cubic-bezier(0,0,0,1);
     color: #000;
     text-decoration: none;
 }
 
-header .header_LR a:hover{
+.navigation .header_LR a:hover{
     background-color: #f5d341;
 }
 
 /*主菜单的下拉菜单*/
 
-header .menu_drop{
+.navigation .menu_drop{
     display: block;
     list-style: none;
     position: absolute;
@@ -96,16 +115,16 @@ header .menu_drop{
 }
 
 
-header .menu_drop li:nth-child(1){
+.navigation .menu_drop li:nth-child(1){
     margin: 30px 0 0 0;
 }
 
-header .menu_drop li{
+.navigation .menu_drop li{
     background-color: #f5d341;
     padding: 10px 0 10px 10px;
 }
 
-header .menu_drop li:hover{
+.navigation .menu_drop li:hover{
     background-color: #f6d958;
 }
 
@@ -304,8 +323,8 @@ header .menu_drop li:hover{
 
 }
 /* 箭头 */
-.meaning_action span:before,
-.meaning_action span:after {
+ .right_arrow:before,
+ .right_arrow:after {
     content: '';
     display: block;
     position: absolute;
@@ -317,11 +336,11 @@ header .menu_drop li:hover{
     top: 30%;
     transition: all .3s ease-in-out;
 }
-.meaning_action span:before{
+.right_arrow:before{
     transform:translate(0%, -50%) rotate(-45deg)
 }
 
-.meaning_action span:after {
+.right_arrow:after {
     transform:translate(0%, 0%) rotate(45deg);
 }
 
@@ -554,32 +573,142 @@ header .menu_drop li:hover{
 }
 
 
+
 /******************************************第五个章节结尾****************************************************************/
 
+.section_6{
+    height: 480px;
+    background-color: #0f0f0f;
+    margin-top: -30px;
+}
+.section_6 h1{
+    padding-top: 50px;
+    text-align: center;
+   color: white;
+}
+.evaluation_container{
+    margin-top: 50px;
+    margin: 30px 10% 0px 10%;
+}
+
+.evaluation{
+    position: relative;
+    width: 700px;
+    background-color: white;
+    height: 280px;
+    padding: 50px 50px 30px 50px;
+    margin: 0 10px 0 10px;
+}
+
+
+.evaluation h3{
+    color: #000;
+    font-size: 22px;
+    line-height: 1.17;
+    margin: 10px 0 0 0;
+}
+
+.evaluation_read{
+    position: absolute;
+    bottom: 30px;
+    font-weight: bold;
+    width: 100px;
+    background-color: #f2c811;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    padding: 5px;
+}
+
+/******************************************第六个章节结尾****************************************************************/
+
+
+
+
+.section_7{
+    margin-top: -30px;
+    height: 350px;
+    background-color: white;
+    text-align: center;
+}
+
+.section_7 h1{
+    padding-top: 60px;
+}
+.section_7 p{
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+.section_7_use{
+    display: inline-block;
+
+    text-align: center;
+
+    margin-top: 30px;
+    width: 130px;
+    height: 40px;
+    background-color: #f2c811;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.section_7_use p{
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+/******************************************第七个章节结尾****************************************************************/
 .foot{
     background-color: #f2f2f2;
     height: 600px;
     padding-top: 60px;
     padding-left: 15%;
 
-
 }
 
-.foot ul{
+.foot_1 ul{
     list-style: none;
     color: #000;
 
     padding-left: 17px;
     margin-bottom: 14px;
+
     margin-left: 0;
 }
-.foot ul li{
+.foot_1 ul li{
     cursor: pointer;
     margin-bottom: 10px;
-    display: list-item;
+
+}
+
+.foot_des{
+    font-size: 13px;
+    color: gray;
+}
+.foot_separator{
+    width: 24px;
+    height: 1px;
+    border-bottom: 1px solid #dfdfdf;
+    margin: 24px 0 24px 17px;
+
 }
 
 
+.foot_2{
+    border-top: 1px solid #dedede;
+    padding-top: 6%;
+}
+
+.foot_2_icon{
+    float: left;
+}
+
+.foot_2_icon ul li{
+
+}
 
 
 

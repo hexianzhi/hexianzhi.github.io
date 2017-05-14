@@ -1,0 +1,370 @@
+
+body{
+    font-family: 微软雅黑;
+
+}
+
+header{
+    z-index: 9999;
+}
+
+
+.navigation-fixed{
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 88888;
+}
+/*导航栏*/
+.navigation{
+    display: block;
+
+    height: 80px;
+    background-color: white;
+    /*position: relative;*/
+    font-size: 15px;
+    z-index: 88888;
+    color: #000;
+
+}
+.navigation .icon_container{
+    float: left;
+    /*left: 100px;*/
+    /*position: absolute;*/
+    margin-left: 200px;
+    margin-top:30px;
+}
+
+
+.navigation #product_name{
+    cursor: pointer;
+    position: absolute;
+    border-left: 3px solid gainsboro;
+    margin-left: 30px;
+    padding-left: 20px;
+    margin-top:30px;
+    font-weight: bold;
+}
+
+/*主菜单*/
+.navigation .menu{
+    cursor: pointer;
+    float: left;
+    /*position: absolute;*/
+    /*left: 450px;*/
+    margin-left: 150px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.navigation .menu_item{
+    padding: 30px 15px 30px 15px;
+
+    float: left;
+    position: relative;
+    transition:background-color .3s cubic-bezier(0,0,0,1);
+}
+.navigation .menu_item a{
+    color: #000;
+    text-decoration: none;
+}
+
+.navigation .menu_item:hover{
+    background-color: #f5d341;
+}
+.navigation .menu_item .menu_drop {
+    display: none;
+}
+.navigation .menu_item:hover .menu_drop {
+    display: block;
+}
+.navigation .header_LR{
+    height: 80px;
+    cursor: pointer;
+    font-weight: bold;
+    float: right;
+    margin-right: 200px;
+    /*position: absolute;*/
+    /*right: 300px;*/
+}
+
+/* 登录注册*/
+.navigation .header_LR a{
+    float:left;
+    padding:30px 15px 30px 15px;
+    transition:background-color .25s cubic-bezier(0,0,0,1);
+    color: #000;
+    text-decoration: none;
+}
+
+.navigation .header_LR a:hover{
+    background-color: #f5d341;
+}
+
+/*主菜单的下拉菜单*/
+
+.navigation .menu_drop{
+    display: block;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    width: 200px;
+}
+
+
+.navigation .menu_drop li:nth-child(1){
+    margin: 30px 0 0 0;
+}
+
+.navigation .menu_drop li{
+    background-color: #f5d341;
+    padding: 10px 0 10px 10px;
+}
+
+.navigation .menu_drop li:hover{
+
+}
+
+/******************************************导航栏结尾****************************************************************/
+.apartment_des{
+    height: 200px;
+    background-color: #f2c811;
+    margin: 80px 0 0 0;
+    padding: 50px 180px 0 180px;
+    color: #000;
+}
+
+.apartment_des h1{
+    display: inline-block;
+
+    float: left;
+    font-size: 36px;
+    line-height: 1.22;
+    font-weight: bold;
+    text-align: center;
+}
+
+.apartment_des p{
+    padding: 10px 0 0 0;
+    text-align: left;
+    font-size: 16px;
+}
+
+
+/******************************************第一个章节结尾****************************************************************/
+
+
+.apartment_classification {
+    overflow: hidden;
+    background-color: #000;
+    padding: 5px 0 5px 180px;
+}
+.apartment_classification ul{
+    list-style: none;
+
+}
+.apartment_classification .linkList li{
+    margin-left: 20px;
+    float: left;
+}
+
+.apartment_classification .linkList li a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 16px;
+}
+.apartment_classification .linkList li a:active{
+
+    color:#000;
+    color: #f6d958;
+}
+
+/******************************************第二个章节结尾****************************************************************/
+.apartment_main{
+    width: 100%;
+    overflow: hidden;
+}
+.owl-carousel-vertical-container{
+    height: 600px;
+    width: 7960px;
+    overflow: hidden;
+    transition: transform 1s;
+}
+.animated{
+    animation-duration: 3s;
+}
+
+.owl-carousel-vertical{
+    float: left;
+    height: 600px;
+    width: 1960px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.owl-stage {
+    display: block;
+}
+
+.owl-stage-container{
+    margin: 85px 160px  0 160px;
+    text-align: center;
+    display: block;
+}
+
+
+.stage_left_img_container img{
+    height: 350px;
+    width: 500px;
+    border: 30px solid #000;
+    border-radius: 3px;
+    box-shadow: 4px 4px 8px 0 rgba(0,0,0,.2)
+}
+
+.stage_btn{
+    display: inline-block;
+    margin-top: 50px;
+    background-color: #f2c811;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100px;
+}
+
+
+.stage_right{
+    text-align: left;
+}
+
+.stage_right p{
+    font-size: 16px;
+}
+
+.stage_right h3{
+    font-weight: bold;
+}
+
+.stage_right_ul{
+    padding-left: 45px;
+
+}
+.stage_right_ul li{
+    font-size: 16px;
+    list-style: circle;
+    padding-top: 5px;
+}
+
+
+/*控制条*/
+.section_controls{
+    height: 110px;
+    background-color: black;
+}
+#owl-stage-controls{
+    display: block;
+    text-align: center;
+    margin: 0 220px 0 220px;
+}
+
+
+.text-heading4 {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 2.9%;
+    padding-bottom: 5px;
+    position: relative;
+    text-align: center;
+    width: 18%;
+    /*padding: 0 100px 0 100px;*/
+    text-decoration: none;
+}
+.text-heading4.active:before{
+    border-color: transparent transparent #000 transparent;
+}
+
+/*向上的箭头*/
+.text-heading4:before{
+    background: none;
+    border-style: solid;
+    border-width: 0 25px 25px;
+    border-color: transparent transparent transparent transparent;
+    bottom: 100%;
+    content: "";
+    height: 0;
+    left: 40%;
+    position: absolute;
+    width: 0;
+    z-index: 9999;
+}
+.icon_contaniner{
+    display: inline-block;
+    margin: 15px;
+}
+.icon_contaniner img{
+
+    width: 30px;
+    height: 30px;
+}
+
+.text-heading4 p{
+    padding: 15px 0 10px 0;
+    font-size: 16px;
+    color: white;
+}
+
+
+.foot{
+    background-color: #f2f2f2;
+    height: 600px;
+    padding-top: 60px;
+    padding-left: 15%;
+
+}
+
+.foot_1 ul{
+    list-style: none;
+    color: #000;
+
+    padding-left: 17px;
+    margin-bottom: 14px;
+
+    margin-left: 0;
+}
+.foot_1 ul li{
+    cursor: pointer;
+    margin-bottom: 10px;
+
+}
+
+.foot_des{
+    font-size: 13px;
+    color: gray;
+}
+.foot_separator{
+    width: 24px;
+    height: 1px;
+    border-bottom: 1px solid #dfdfdf;
+    margin: 24px 0 24px 17px;
+
+}
+
+
+.foot_2{
+    border-top: 1px solid #dedede;
+    padding-top: 6%;
+}
+
+.foot_2_icon{
+    float: left;
+}
+
+.foot_2_icon ul li{
+
+}
+
+
+
+
+/*****************************************节结尾****************************************************************
