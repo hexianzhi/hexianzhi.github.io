@@ -1,31 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html class="yui3-js-enabled" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
+    <title>StackBlur - A fast, almost Gaussian blur for Canvas by Mario Klingemann, Quasimondo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css" media="screen">
         body {
-            margin: 0;
-            padding: 0;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        #imageHolder,#canvasHolder,#srcimg,#canvas{
+            width: 100%;
+            height: 100%;
         }
 
-        #test-img {
-            width: 1080px;
-            height: 960px;
-            background-color: red;
+        #slider-contentbox{
+            position: absolute;
+            top: 2%;
+            left: 45%;
+        }
+        #slider-contentbox p{
+            color: red;
         }
     </style>
-</head>
+
+
 <body>
-<div id="" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
-    <img id="test-img" src="T002R300x300M000000Mz83y3b2udF.jpg"><br>
+
+<div id="imageHolder" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
+    <img id="srcimg" src="T002R300x300M000000Mz83y3b2udF.jpg"><br>
 </div>
 <div id="canvasHolder" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
-    <canvas style="width: 1080px; height: 960px;" id="canvas"></canvas>
+    <canvas  id="canvas" width = "800" height="800"></canvas>
 </div>
+
+
+<div id="slider-contentbox">
+    <p>输入高斯模糊半径( 0 - 180) </p>
+    <input id="radiu-input" type="text"/>
+</div>
+
+
+
 </body>
+
 <script src="algo.js"></script>
-<script>
-    stackBlurImage( 'test-img', 'canvas', 75, false );
+<script type="text/javascript">
+
+
+        var input = document.getElementById("radiu-input");
+        var canvas = document.getElementById("canvas");
+
+        (function () {
+            input.value = 50;
+            stackBlurImage('srcimg', 'canvas', input.value, true);
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+        })();
+
+        input.addEventListener('keyup',function () {
+            console.log(input.value);
+            stackBlurImage('srcimg', 'canvas', input.value, true);
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+        });
+
+
+
+//        stackBlurImage('srcimg', 'canvas', 12, false);
+
 </script>
+</div>
 </html>
