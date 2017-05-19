@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #test-img {
+            width: 1080px;
+            height: 960px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
+    <img id="test-img" src="T002R300x300M000000Mz83y3b2udF.jpg"><br>
+</div>
+<div id="canvasHolder" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
+    <canvas style="width: 1080px; height: 960px;" id="canvas"></canvas>
+</div>
+</body>
+<script src="algo.js"></script>
+<script>
+    stackBlurImage( 'test-img', 'canvas', 75, false );
+</script>
+</html>
