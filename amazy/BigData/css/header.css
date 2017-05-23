@@ -248,13 +248,21 @@ header{
     display: none;
 }
 
-#power_des_3_video_div{
+.power_des_3_video_div{
     z-index: 999;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: none;
+    background-color: white;
+}
+.power_des_3_video_div .close{
+    display: inline-block;
+    float: right;
+    color: #000;
+    padding: 1px;
+    padding-left: 5px;
 }
 
 
@@ -323,18 +331,9 @@ header{
 
 }
 /* 箭头 */
- .right_arrow:before,
- .right_arrow:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 3px;
-    height: 12px;
-    background: #fff;
-    border-radius: .3em;
-    right: -20%;
-    top: 30%;
-    transition: all .3s ease-in-out;
+ .right_arrow:before{
+
+
 }
 .right_arrow:before{
     transform:translate(0%, -50%) rotate(-45deg)
@@ -505,22 +504,28 @@ header{
     }
 
 }
+.user_cover:before{
+    content: "“";
+    display: block;
+    font-size: 60px;
+    padding-top: 5%;
+}
 
 .user_cover{
     position: absolute;
-
     height: 400px;
     width: 470px;
     top: 0;
     left: 15px;
-
     background-color: #fff;
     transition: opacity .5s ;
     opacity: 0;
 }
 
 .user_cover h3{
-    padding: 20% 10% 0 8%;
+
+    margin-top: -30px;
+    padding: 0 10% 0 8%;
 
 }
 
@@ -552,7 +557,7 @@ header{
 }
 
 .user:hover .user_cover{
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .user_cover:hover .uesr_img h5,.user_cover:hover .uesr_img h3{
     opacity: 0;
@@ -563,15 +568,24 @@ header{
 }
 
 
-.video_div{
-    z-index: 999;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-
+/*.video_div{*/
+    /*z-index: 999;*/
+    /*position: fixed;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*display: none;*/
+/*}*/
+/*.video_div p{*/
+    /*display: block;*/
+    /*width: 962px;*/
+    /*background-color: white;*/
+/*}*/
+/*.close{*/
+    /*float: right;*/
+    /*color: #000;*/
+    /*padding: 1px;*/
+/*}*/
 
 
 /******************************************第五个章节结尾****************************************************************/
@@ -608,16 +622,19 @@ header{
     margin: 10px 0 0 0;
 }
 
+
 .evaluation_read{
-    position: absolute;
-    bottom: 30px;
+    /*margin: 20px 0 0 0;*/
+    /*margin:auto;*/
+    margin-top: 20px;
     font-weight: bold;
-    width: 100px;
     background-color: #f2c811;
-    text-align: center;
     display: inline-block;
     font-size: 16px;
-    padding: 5px;
+    padding: 8px 15px 0 15px;
+}
+.evaluation_read p{
+    /*text-align: center;*/
 }
 
 /******************************************第六个章节结尾****************************************************************/

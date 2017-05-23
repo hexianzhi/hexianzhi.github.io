@@ -4,10 +4,12 @@
 
 $(document).ready(function() {
 
-    var mask = $(".mask");
+    var mask = $($(".mask").get(0));
+
 
     //复用 close和　maak的播放代码。什么设计模式呢？
-    var powerDesVideo = $("#power_des_3_video_div");
+    var powerDesVideo = $(".power_des_3_video_div").get(0);//这是个 DOM 元素了
+    powerDesVideo =  $(powerDesVideo); //转换成 jq Obejct
     var beginPowerDesVideo = $("#power_des_3");
     var video =  $("#power_des_3_video").get(0);
 
@@ -56,7 +58,6 @@ $(document).ready(function() {
         mask.css("display","block");
         powerDesVideo.css("display","block");
     }
-
 
 
 
@@ -298,45 +299,45 @@ $(document).ready(function() {
 
 
 
-    var beginUserDesVideo = $(".user_cover_vider_container");
-    var videoContainer = $(".video_div");
-    var video2 = $(".video").get(0);
-    beginUserDesVideo.click(function (element) {
-        float();
-        video2.play();
-    });
-
-    mask.click(function () {
-        close();
-        video2.pause();
-    });
-
-    function close() {
-        if (!checkIsFloat()) {
-            mask.css("display","none");
-            videoContainer.css("display","none");
-        } else {
-            //啥事都不做
-        }
-    }
-
-
-    // 检查是否有遮罩和视频播放器
-    function checkIsFloat() {
-        if ( mask.css("display") === "none" && videoContainer.css("display")=== "none") {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * 显示浮层
-     */
-    function float() {
-        mask.css("display","block");
-        videoContainer.css("display","block");
-    }
+    // var beginUserDesVideo = $(".user_cover_vider_container");
+    // var videoContainer = $(".video_div");
+    // var video2 = $(".video").get(0);
+    // beginUserDesVideo.click(function (element) {
+    //     float();
+    //     video2.play();
+    // });
+    //
+    // mask.click(function () {
+    //     close();
+    //     video2.pause();
+    // });
+    //
+    // function close() {
+    //     if (!checkIsFloat()) {
+    //         mask.css("display","none");
+    //         videoContainer.css("display","none");
+    //     } else {
+    //         //啥事都不做
+    //     }
+    // }
+    //
+    //
+    // // 检查是否有遮罩和视频播放器
+    // function checkIsFloat() {
+    //     if ( mask.css("display") === "none" && videoContainer.css("display")=== "none") {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+    //
+    // /**
+    //  * 显示浮层
+    //  */
+    // function float() {
+    //     mask.css("display","block");
+    //     videoContainer.css("display","block");
+    // }
 
 
 });

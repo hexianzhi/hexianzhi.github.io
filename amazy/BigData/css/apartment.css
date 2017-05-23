@@ -8,6 +8,9 @@ header{
     z-index: 9999;
 }
 
+.animated{
+    animation-duration: 1s;
+}
 
 .navigation-fixed{
     left: 0;
@@ -187,13 +190,12 @@ header{
 }
 .owl-carousel-vertical-container{
     height: 600px;
-    width: 7960px;
+    width: 15680px;
     overflow: hidden;
-    transition: transform 1s;
+    transform: translate3d(-3920px, 0px, 0px);
+    transition: 0s;
 }
-.animated{
-    animation-duration: 3s;
-}
+
 
 .owl-carousel-vertical{
     float: left;
