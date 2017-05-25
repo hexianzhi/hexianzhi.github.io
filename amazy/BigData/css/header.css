@@ -437,10 +437,12 @@ header{
 
 
 .section_5{
-    height: 780px;
+    /*height: 780px;*/
     /*margin-top: -15px;*/
     background-color: #f2c811;
     padding-top: 40px;
+    padding: 70px;
+    overflow: hidden;
 }
 
 .section_5 h1{
@@ -452,10 +454,13 @@ header{
     position: relative;
 
 }
+
+
+
 .uesr_img{
     background-image: url("https://powerbicdn.azureedge.net/cvt-3270d7c39dd75bde4c601fa2479ec40e5f55c8c09da7b3075fb2fa6c5c85421f/pictures/shared/fancy-tile/woman-surface-coffee.jpg");
     height: 400px;
-    width: 470px;
+    width: 100%;
     position: relative;
     background-size: cover;
 }
@@ -483,7 +488,6 @@ header{
 
 .user_icon{
     height: 60px;
-    width: 470px;
     background-color: white;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2)
@@ -498,14 +502,15 @@ header{
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 1600px) {
     .users_container{
         margin: 50px 10% 50px 10%;
     }
 
 }
+
 .user_cover:before{
-    content: "“";
+    content: '“';
     display: block;
     font-size: 60px;
     padding-top: 5%;
@@ -514,19 +519,18 @@ header{
 .user_cover{
     position: absolute;
     height: 400px;
-    width: 470px;
     top: 0;
     left: 15px;
     background-color: #fff;
     transition: opacity .5s ;
     opacity: 0;
+    margin-right: 15px;
 }
 
-.user_cover h3{
 
+.user_cover h3{
     margin-top: -30px;
     padding: 0 10% 0 8%;
-
 }
 
 .user_cover h5{
@@ -568,50 +572,32 @@ header{
 }
 
 
-/*.video_div{*/
-    /*z-index: 999;*/
-    /*position: fixed;*/
-    /*left: 50%;*/
-    /*top: 50%;*/
-    /*transform: translate(-50%, -50%);*/
-    /*display: none;*/
-/*}*/
-/*.video_div p{*/
-    /*display: block;*/
-    /*width: 962px;*/
-    /*background-color: white;*/
-/*}*/
-/*.close{*/
-    /*float: right;*/
-    /*color: #000;*/
-    /*padding: 1px;*/
-/*}*/
-
 
 /******************************************第五个章节结尾****************************************************************/
 
 .section_6{
-    height: 480px;
     background-color: #0f0f0f;
-    margin-top: -30px;
+    margin-top: -20px;
+    overflow: hidden;
+    padding: 50px;
 }
 .section_6 h1{
-    padding-top: 50px;
     text-align: center;
-   color: white;
+    color: white;
 }
 .evaluation_container{
+    background-color: #0f0f0f;
     margin-top: 50px;
     margin: 30px 10% 0px 10%;
 }
 
 .evaluation{
-    position: relative;
-    width: 700px;
+    float: left;
     background-color: white;
     height: 280px;
     padding: 50px 50px 30px 50px;
-    margin: 0 10px 0 10px;
+    /*margin-left:  10px;*/
+    /*margin-right: 10px;*/
 }
 
 
@@ -624,8 +610,7 @@ header{
 
 
 .evaluation_read{
-    /*margin: 20px 0 0 0;*/
-    /*margin:auto;*/
+
     margin-top: 20px;
     font-weight: bold;
     background-color: #f2c811;
