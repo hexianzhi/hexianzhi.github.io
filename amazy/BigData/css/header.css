@@ -10,37 +10,43 @@ header{
 }
 
 
-.navigation-fixed{
+.navigation.navigation-fixed {
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 88888;
 }
-/*导航栏*/
-.navigation{
-    display: block;
 
+
+/*导航栏*/
+.navigation {
+    display: block;
+    width: 100%;
+    overflow: hidden;
     height: 80px;
     background-color: white;
-    /*position: relative;*/
     font-size: 15px;
     z-index: 88888;
     color: #000;
 
 }
+.navigation-container{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navigation .icon_container{
     float: left;
-    /*left: 100px;*/
-    /*position: absolute;*/
-    margin-left: 200px;
     margin-top:30px;
 }
 
 
 .navigation #product_name{
+    float: left;
     cursor: pointer;
-    position: absolute;
+
     border-left: 3px solid gainsboro;
     margin-left: 30px;
     padding-left: 20px;
@@ -52,16 +58,13 @@ header{
 .navigation .menu{
     cursor: pointer;
     float: left;
-    /*position: absolute;*/
-    /*left: 450px;*/
-    margin-left: 150px;
+    margin-left: 60px;
     list-style: none;
     font-weight: bold;
 }
 
 .navigation .menu_item{
     padding: 30px 15px 30px 15px;
-
     float: left;
     position: relative;
     transition:background-color .3s cubic-bezier(0,0,0,1);
@@ -80,25 +83,31 @@ header{
 .navigation .menu_item:hover .menu_drop {
     display: block;
 }
+
 .navigation .header_LR{
     height: 80px;
     cursor: pointer;
     font-weight: bold;
     float: right;
-    margin-right: 200px;
-    /*position: absolute;*/
-    /*right: 300px;*/
+    margin-right: 0px;
+    padding-left: 20%;
 }
 
 /* 登录注册*/
 .navigation .header_LR a{
-    float:left;
-
+    float:right;
     padding:30px 15px 30px 15px;
     transition:background-color .25s cubic-bezier(0,0,0,1);
     color: #000;
     text-decoration: none;
 }
+
+
+.mobile-menu{
+    display: none;
+    height: 80px;
+}
+
 
 .navigation .header_LR a:hover{
     background-color: #f5d341;
@@ -115,18 +124,118 @@ header{
 }
 
 
-.navigation .menu_drop li:nth-child(1){
+.navigation .menu_item .menu_drop li:nth-child(1){
     margin: 30px 0 0 0;
 }
 
-.navigation .menu_drop li{
+.navigation .menu_item .menu_drop li{
     background-color: #f5d341;
     padding: 10px 0 10px 10px;
 }
 
-.navigation .menu_drop li:hover{
+.navigation .menu_item .menu_drop li:hover{
     background-color: #f6d958;
 }
+
+@media (max-width: 992px) {
+    #product_name{
+        display: none;
+    }
+    .icon_container{
+        display: block;
+        float: inherit;
+        margin-left: 30px;
+    }
+    .navigation{
+        overflow: inherit;
+        position: relative;
+        width: 100%;
+    }
+
+    .navigation-container{
+        width: 100%;
+        max-width: inherit;
+        position: relative;
+        margin-left: inherit;
+    }
+
+    .navigation .menu{
+        /*先隐藏，美观。*/
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        margin: 0;
+
+        width: 100%;
+        cursor: pointer;
+        list-style: none;
+        background-color: #f5d341;
+    }
+
+    .navigation .menu_item{
+        float: inherit;
+        padding:15px;
+        width: 100%;
+        background-color: #f5d341;
+        position: relative;
+        transition:background-color .3s cubic-bezier(0,0,0,1);
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .navigation .menu_item a{
+        margin-left: 20px;
+
+    }
+
+    .navigation .menu_item .menu_drop{
+        position: relative;
+        /*padding-left: 40px;*/
+        float: inherit;
+        list-style: none;
+        width: 100%;
+        background-color: #f5d341;
+        display: none;
+    }
+    .navigation .menu_item .menu_drop li:nth-child(1) {
+        margin-top: 15px;!important;
+    }
+
+    .navigation .menu_item .menu_drop li{
+        padding: 15px 35px 35px 15px;!important;
+        font-size: 15px;
+        width: 100%;
+        list-style: none;
+        background-color: #f5d341;
+        font-weight: 400;
+    }
+
+    .mobile-menu {
+        display: block;
+        float:right;
+        text-align: center;
+        background-color: white;
+    }
+    .mobile-menu #dropdownMenu1{
+        margin-top: 20px;
+        font-size: 30px;
+    }
+
+
+    /*.navigation .menu_item:hover .menu_drop {*/
+        /*display: block;*/
+    /*}*/
+
+    .navigation .menu_item .menu_drop li:hover{
+        background-color: inherit;
+    }
+
+    .header_LR{
+        display: none;
+    }
+
+}
+
 
 
 /******************************************导航栏结尾****************************************************************/
@@ -136,36 +245,36 @@ header{
     background-image: url(https://powerbicdn.azureedge.net/cvt-9ea9c477d68915c36ed2634e534947539995dd8e33cf5176b3ae3c65c43e786a/pictures/pages/pbi-pattern.png),
     linear-gradient(to top, rgb(255, 210, 13), rgb(242, 200, 17));
     background-size: cover;
-    padding: 100px 0 0 0;
+    margin-top: 80px;
+    padding: 30px 0 0 0;
     position: relative;
-    height: 780px;
+    /*height: 780px;*/
 
     /*什么情况，不加这个只要有 div 就出现浮动*/
     overflow: hidden;
 }
-.row::before, .row::after {
-    content: ' ';
-}
 
-.row{
+
+.section_1_row{
     display: block;
     color: #000;
     text-align:center;
     font-size: 48px;
     line-height: 1.16;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .text_super{
     font-weight: bold;
 }
 
 .text_nomal{
-    /*margin: 0 30% 0 30%;*/
     text-align:center;
     font-size: 22px;
     padding-top: 30px;
-    font-weight: 400;
     line-height: 1.5;
 }
+
 
 .text_small{
     display: inline-block;
@@ -176,15 +285,17 @@ header{
     border: 2px #000 solid;
 }
 
-.row_4{
-
-    margin-left: 200px;
-    bottom: -100%;
-    position: absolute;
-    transition: bottom .3s cubic-bezier(0,0,0,1);
-}
 .row_4 img{
+    max-width: 100%;
     transition: bottom .25s cubic-bezier(0,0,0,1);
+}
+
+
+@media (max-width:1200px) {
+    .row_4 img{
+        width: 100%;
+    }
+
 }
 .text_small:hover{
     background-color:black;
@@ -198,8 +309,7 @@ header{
 .section_2{
     background-color: #f5d341;
     margin-top: -25px;
-    padding: 5%;
-    height: 400px;
+    padding: 60px 0 80px 0;
     text-align: center;
 }
 
@@ -214,7 +324,7 @@ header{
     display: block;
     font-size: 26px;
     text-align: center;
-    padding: 0 10% 0 10%;
+    padding: 30px 8% 0 8% ;
 }
 #power_des_3{
     display: inline-block;
@@ -224,6 +334,13 @@ header{
     font-size: 16px;
     font-weight: bold;
     color: #000;
+
+}
+
+@media (max-width:1200px) {
+    #power_des_3{
+        padding: 0 20px 0 20px;
+    }
 
 }
 #power_des_3 a{
@@ -271,22 +388,25 @@ header{
 .section_3{
     margin-top: -25px;
     background-color: #000;
-    height: 500px;
     color: #fff;
+    padding: 80px 0 40px 0;
+    overflow: hidden;
 }
 #power_meaning_title{
     display: block;
-    padding: 80px 0 20px 0;
+    padding: 0 0 20px 0;
     font-size: 30px;
     color: #fff;
     text-align: center;
 }
 .section_3_container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 350px;
+    padding: 0 10% 0 10%;
+}
 
+@media (max-width: 992px) {
+    .section_3_container{
+        padding: 0 10px 0 10px;
+    }
 }
 
 /*
@@ -294,28 +414,30 @@ header{
 如果想内容没变化那就得对外容器设置 border 利用颜色值隐藏起来,再对内容器设置 border， perfect
 */
 .power_meaning_bor{
-    margin: 0 20px 0 20px;
-    background-color: #333333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    border-left: 4px solid #333;
     cursor: pointer;
+    padding: 20px;
 }
+
+
 /*这下面就有瑕疵了，重构肯定要弄这里*/
 .power_meaning{
+    background-color: #333;
     padding: 20px;
     height: 240px;
     position: relative;
     border-left: 4px solid #333;
 }
+
+
 .power_meaning img{
     padding-bottom: 10px;
 }
-.power_meaning_bor:hover{
+
+.power_meaning:hover{
     border-left: 4px solid #f5f72b  ;
 }
+
+
 .meaning_people{
     color: #ecc11a;
     font-size: 16px;
@@ -357,36 +479,38 @@ header{
     margin-top: -25px;
     text-align: center;
     padding-bottom: 50px;
+    overflow: hidden;
+    /*overflow: auto;*/
 }
 
 .section_4 h1{
-
     font-size: 30px;
     color: #000;
     padding-top: 30px;
 }
+
 .section_4 h5{
     font-size: 16px;
-
-    margin: 15px 20% 0 20%;
+    margin: 15px 8% 0 8%;
+}
+@media (max-width: 768px) {
+    .section_4 h5{
+        margin: 10px;
+    }
 }
 
 .data_connections{
-    margin: 30px 10% 30px 10%;
+    display: block;
+    margin: 30px 5% 30px 5%;
+    overflow: hidden;
 }
-.data_connections_row{
-    display: flex;
-    margin: 20px 0 20px 0;
-    align-content: center;
-    justify-content: center;
-}
+
 
 .data_connections_item{
     display: inline-block;
     cursor: pointer;
-    width: 180px;
     height: 120px;
-    margin: 0 30px  0 30px;
+    padding: 10px 20px 10px 20px;
     text-align: center;
     font-size: 16px;
 }
@@ -409,6 +533,7 @@ header{
     text-decoration: none;
 
 }
+
 .section_4 a:hover{
     text-decoration: underline;
 }
@@ -441,9 +566,11 @@ header{
     /*margin-top: -15px;*/
     background-color: #f2c811;
     padding-top: 40px;
-    padding: 70px;
+    padding: 70px 0 70px 0 ;
     overflow: hidden;
+    /*overflow: auto;*/
 }
+
 
 .section_5 h1{
     font-size: 30px;
@@ -506,8 +633,14 @@ header{
     .users_container{
         margin: 50px 10% 50px 10%;
     }
-
 }
+
+@media (min-width: 992px) {
+    .users_container{
+        margin: 50px 5% 50px 5%;
+    }
+}
+
 
 .user_cover:before{
     content: '“';
@@ -579,7 +712,9 @@ header{
     background-color: #0f0f0f;
     margin-top: -20px;
     overflow: hidden;
-    padding: 50px;
+    /*overflow: auto;*/
+    padding: 50px 0 50px 0;
+
 }
 .section_6 h1{
     text-align: center;
@@ -591,11 +726,17 @@ header{
     margin: 30px 10% 0px 10%;
 }
 
+@media (min-width: 992px) {
+    .evaluation{
+        margin: 30px 5% 30px 5%;
+    }
+}
 .evaluation{
     float: left;
     background-color: white;
-    height: 280px;
+    min-height: 280px;
     padding: 50px 50px 30px 50px;
+    overflow: hidden;
     /*margin-left:  10px;*/
     /*margin-right: 10px;*/
 }
@@ -665,19 +806,17 @@ header{
 /******************************************第七个章节结尾****************************************************************/
 .foot{
     background-color: #f2f2f2;
-    height: 600px;
-    padding-top: 60px;
+    padding: 60px 0 40px 0;
     padding-left: 15%;
+    overflow: hidden;
 
 }
 
 .foot_1 ul{
     list-style: none;
     color: #000;
-
     padding-left: 17px;
     margin-bottom: 14px;
-
     margin-left: 0;
 }
 .foot_1 ul li{

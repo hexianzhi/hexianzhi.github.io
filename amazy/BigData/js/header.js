@@ -219,64 +219,84 @@ $(document).ready(function() {
 
     ];
 
+    //因为响应式开发的需要，该包含 dataConnectionRow 的逻辑被废除
+    // function loadConnections(maxCount) {
+    //     var dataRow = "",dataItem = "",dataItemImg = "",dataItemName = "";
+    //     var nextDivCount = 5;
+    //
+    //     for(var index = 0; index < maxCount; index++){
+    //
+    //         if(index === 0){
+    //             dataRow = "<div class='data_connections_row'>";
+    //         }
+    //         dataItem += "<div class='data_connections_item'>";
+    //
+    //         var src = datasSource[index].img;
+    //         dataItemImg = "<img class='data_item_img'" + "src='" + src + "'>";
+    //
+    //         var name = datasSource[index].name;
+    //         dataItemName = "<p class='data_item_name'>" + name + "</p>";
+    //
+    //         dataItem += dataItemImg + dataItemName;
+    //         dataItem += "</div>";
+    //
+    //
+    //         // 如果只有一个数据的情况
+    //         if(index === 0 && index === (maxCount - 1)){
+    //             dataRow += dataItem +"</div>";
+    //             return dataRow;
+    //         }
+    //
+    //         // 最后一个数据了
+    //         if( index === (maxCount - 1)){
+    //             dataRow += dataItem + "</div>";
+    //             return dataRow;
+    //         }
+    //
+    //         // 如果是第六个数据了
+    //         if (index % nextDivCount === 0 && index != 0){
+    //             dataRow +=  dataItem + "</div>";
+    //             dataItem = "";
+    //
+    //             //如果第六个数据不是最后一个数据就填充新的 row，否则啥都不做等下一轮判断
+    //             if (index != (maxCount - 1)){
+    //                 dataRow += "<div class='data_connections_row'>";
+    //                 nextDivCount += 6;
+    //             }else {
+    //                 return dataRow;
+    //             }
+    //
+    //         }
+    //     }
+    //     return dataRow;
+    //
+    // }
+
     function loadConnections(maxCount) {
-        var dataRow = "",dataItem = "",dataItemImg = "",dataItemName = "";
-        var nextDivCount = 5;
+        var dataItem = "",dataItemImg = "",dataItemName = "";
 
         for(var index = 0; index < maxCount; index++){
 
-            if(index === 0){
-                dataRow = "<div class='data_connections_row'>";
-            }
-            dataItem += "<div class='data_connections_item'>";
+            dataItem += "<div class='data_connections_item col-xs-6 col-sm-4 col-md-3 col-lg-2'>";
 
             var src = datasSource[index].img;
             dataItemImg = "<img class='data_item_img'" + "src='" + src + "'>";
 
             var name = datasSource[index].name;
-            dataItemName = "<p class='data_item_name'>" + name + "</p>";
+            dataItemName = "<p class='data_item_name '>" + name + "</p>";
 
             dataItem += dataItemImg + dataItemName;
+
             dataItem += "</div>";
-
-
-            // 如果只有一个数据的情况
-            if(index === 0 && index === (maxCount - 1)){
-                dataRow += dataItem +"</div>";
-                return dataRow;
-            }
-
-            // 最后一个数据了
-            if( index === (maxCount - 1)){
-                dataRow += dataItem + "</div>";
-                return dataRow;
-            }
-
-            // 如果是第六个数据了
-            if (index % nextDivCount === 0 && index != 0){
-                dataRow +=  dataItem + "</div>";
-                dataItem = "";
-
-                //如果第六个数据不是最后一个数据就填充新的 row，否则啥都不做等下一轮判断
-                if (index != (maxCount - 1)){
-                    dataRow += "<div class='data_connections_row'>";
-                    nextDivCount += 6;
-                }else {
-                    return dataRow;
-                }
-
-            }
         }
-        return dataRow;
-
+        return dataItem;
     }
-
-
 
     var maxCount = 12;
     var loadConnectionsBtn = $("#data_connections_operation");
     var isLoadAll = true;
     var lookAllConnections= $("#data_connections_operation_all");
+
     //假设我们的数据一开始能够占满两行！！！
     var data_connections = $(".data_connections");
     data_connections.html(loadConnections(12));
@@ -295,50 +315,6 @@ $(document).ready(function() {
         }
 
     });
-
-
-
-
-    // var beginUserDesVideo = $(".user_cover_vider_container");
-    // var videoContainer = $(".video_div");
-    // var video2 = $(".video").get(0);
-    // beginUserDesVideo.click(function (element) {
-    //     float();
-    //     video2.play();
-    // });
-    //
-    // mask.click(function () {
-    //     close();
-    //     video2.pause();
-    // });
-    //
-    // function close() {
-    //     if (!checkIsFloat()) {
-    //         mask.css("display","none");
-    //         videoContainer.css("display","none");
-    //     } else {
-    //         //啥事都不做
-    //     }
-    // }
-    //
-    //
-    // // 检查是否有遮罩和视频播放器
-    // function checkIsFloat() {
-    //     if ( mask.css("display") === "none" && videoContainer.css("display")=== "none") {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-    //
-    // /**
-    //  * 显示浮层
-    //  */
-    // function float() {
-    //     mask.css("display","block");
-    //     videoContainer.css("display","block");
-    // }
-
 
 });
 
