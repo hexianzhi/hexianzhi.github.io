@@ -267,6 +267,180 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/fullScreen-backgrund-video/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歌顿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歌顿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/12/fullScreen-backgrund-video/" itemprop="url">
+                  HTML5全屏背景视频与 CSS 和 JS（插件或库）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T16:07:30+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>译文原链接：<a href="http://codetheory.in/html5-fullscreen-background-video/" target="_blank" rel="external">http://codetheory.in/html5-fullscreen-background-video/</a></em></p>
+<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><blockquote>
+<p>当网页载入时，<a href="http://rishabhp.github.io/bideo.js/" target="_blank" rel="external">自动播放的全屏背景视频 </a>已经成为当前颇受欢迎的趋势。 就个人而言，我认为自动播放、质量好的视频会增加用户/客户的参与度。应该记住，视频的故事必须与品牌相关。 近年来，我们被FB和Twitter等社交网络上的大量视频所包围。 据研究由此引起了用户更多的参与。</p>
+<p>最近我不得不在一个网站上实现相同的功能，因此我决定构建一个用到 HTML5 视频元素并且易于使用的基于JS的插件，这个插件常在一个容器内部显示背景视频。 我已经将所有代码以及工作演示放在 <a href="https://github.com/rishabhp/bideo.js" target="_blank" rel="external">Github- Bideo.js</a>  上。现在让我们来讨论一下在执行过程中所发生的一切事情，以及我在途中学习到了什么。</p>
+</blockquote>
+<h3 id="基本实现"><a href="#基本实现" class="headerlink" title="基本实现"></a>基本实现</h3><p>你会认为这些实现非常简单。 将HTML5 video 元素投入容器内并指定100％的宽度和高度。 好的，似乎合理但是不行，这有个例子： <a href="https://codepen.io/rishabhp/pen/wGLmEv" target="_blank" rel="external">DEMO</a></p>
+<p>您会注意到背景视频样式是中心对齐，并在两侧留下了大量的空白。 这是因为当您缩放（或调整大小）视频元素时，它会按比例更改其尺寸。 所以如果一个视频是400×200，那么即使你的尺寸设置为500×400，也不会这样显示出来。 它将被调整到500×250（按比例）。</p>
+<p>所以在这种情况下会发生的事是：首先实现高度100％的样式，并相应地计算宽度，因此最终出现的效果不是父容器的100％。</p>
+<p>因此这是我遇到的第一个问题，我开始通过查看不同站点的其他实现来找出解决方案。我希望视频可以被设置为 CSS 的背景样式，然后我们可以像 <em>background-size：cover / contains</em>  这样的东西，但是不行，这是不可能的（也许将来）。不过这是我们需要的样式。 有些人认为这段代码会有用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#container &#123;</div><div class="line">  overflow: hidden;</div><div class="line">  height: 400px;</div><div class="line">  background: #edeae8;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">video &#123;</div><div class="line">  width: 100%; height: 100%;</div><div class="line">   </div><div class="line">  position: absolute;</div><div class="line">  top: 0; left: 0; right: 0; bottom: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但这没啥用！ 您会注意到出现相同的效果（按比例缩放），除了这一次它左对齐，而不是中心对齐 Demo 。</p>
+<p>在这一点上，有些人可能会想知道为什么我一定要对父容器指定一个固定的高度。 这是因为在你浏览器有指定的宽高情况下，比如说 1920 <em> 1080，此刻有一个 同等尺寸的视频那肯定很方便，但如果来一个 2000 </em> 2000 分辨率的视频呢？你如何确保这个视频能够完整塞进浏览器中？因此非常有必要解决这个问题。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>似乎JavaScript是解决这个问题的唯一方法。 这个想法是获取容器的具体尺寸（宽度和高度），以及视频的尺寸，综合起来用来将视频缩放，确保它覆盖整个容器。 当然，由于比例重新调整，视频实际尺寸上可能比容器大，但没关系。 实际上，当视频宽或高被裁剪掉一些部分时，它看起来并不糟糕。 我正在谈论的功能正是HTML5 中的 ==background-size: cover== 属性 所要做的事情，这意味着如果容器的尺寸与图像的尺寸不成比例，其中一个尺寸将被剪切。</p>
+<p>因此，在同一演示中，如果我们必须调整视频大小，确保完全覆盖该容器，代码如下：</p>
+<p>HTML：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;container&quot;&gt;</div><div class="line">  &lt;video autoplay muted loop&gt;</div><div class="line">    &lt;source src=&quot;source.mp4&quot; type=&quot;video/mp4&quot;&gt;</div><div class="line">  &lt;/video&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/* CSS */</div><div class="line">* &#123;</div><div class="line">  margin: 0; padding: 0;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">#container &#123;</div><div class="line">  overflow: hidden;</div><div class="line">  height: 400px;</div><div class="line">  background: #edeae8;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">video &#123;</div><div class="line">  position: absolute;</div><div class="line">   </div><div class="line">  /* Vertical and Horizontal center*/</div><div class="line">  left: 50%; top: 50%;</div><div class="line">  transform: translate(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，JS 代码展示了视频尺寸如何根据窗口尺寸动态的调整大小：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">// JS</div><div class="line">var video = document.querySelector(&apos;video&apos;)</div><div class="line">  , container = document.querySelector(&apos;#container&apos;);</div><div class="line"> </div><div class="line">var setVideoDimensions = function () &#123;</div><div class="line">  // Video&apos;s intrinsic dimensions</div><div class="line">  var w = video.videoWidth</div><div class="line">    , h = video.videoHeight;</div><div class="line">   </div><div class="line">  // Intrinsic Ratio</div><div class="line">  // Will be more than 1 if W &gt; H and less if W &lt; H</div><div class="line">  var videoRatio = (w / h).toFixed(2);</div><div class="line">   </div><div class="line">  // Get the container&apos;s computed styles</div><div class="line">  //</div><div class="line">  // Also calculate the min dimensions required (this will be</div><div class="line">  // the container dimentions)</div><div class="line">  var containerStyles = window.getComputedStyle(container)</div><div class="line">    , minW = parseInt( containerStyles.getPropertyValue(&apos;width&apos;) )</div><div class="line">    , minH = parseInt( containerStyles.getPropertyValue(&apos;height&apos;) );</div><div class="line">   </div><div class="line">  // What&apos;s the min:intrinsic dimensions</div><div class="line">  //</div><div class="line">  // The idea is to get which of the container dimension</div><div class="line">  // has a higher value when compared with the equivalents</div><div class="line">  // of the video. Imagine a 1200x700 container and</div><div class="line">  // 1000x500 video. Then in order to find the right balance</div><div class="line">  // and do minimum scaling, we have to find the dimension</div><div class="line">  // with higher ratio.</div><div class="line">  //</div><div class="line">  // Ex: 1200/1000 = 1.2 and 700/500 = 1.4 - So it is best to</div><div class="line">  // scale 500 to 700 and then calculate what should be the</div><div class="line">  // right width. If we scale 1000 to 1200 then the height</div><div class="line">  // will become 600 proportionately.</div><div class="line">  var widthRatio = minW / w</div><div class="line">    , heightRatio = minH / h;</div><div class="line">   </div><div class="line">  // Whichever ratio is more, the scaling</div><div class="line">  // has to be done over that dimension</div><div class="line">  if (widthRatio &gt; heightRatio) &#123;</div><div class="line">    var newWidth = minW;</div><div class="line">    var newHeight = Math.ceil( newWidth / videoRatio );</div><div class="line">  &#125;</div><div class="line">  else &#123;</div><div class="line">    var newHeight = minH;</div><div class="line">    var newWidth = Math.ceil( newHeight * videoRatio );</div><div class="line">  &#125;</div><div class="line">   </div><div class="line">  video.style.width = newWidth + &apos;px&apos;;</div><div class="line">  video.style.height = newHeight + &apos;px&apos;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">video.addEventListener(&apos;loadedmetadata&apos;, setVideoDimensions, false);</div><div class="line">window.addEventListener(&apos;resize&apos;, setVideoDimensions, false);</div></pre></td></tr></table></figure>
+<p>最终效果：　<a href="https://codepen.io/rishabhp/pen/wGLjwK" target="_blank" rel="external">Demo</a></p>
+<p>如果您阅读了JS代码中的注释，你会明白放大/缩小视频大小的数学原理。</p>
+<p>注意：在这种测试中，我们在HTML中指定了视频源，但理想情况下，您应该通过JS向视频添加 ==source== 标签，这是因为如果从缓存中获取视频或者在本地进行测试，有时候 ==loadedmetadata==  这事件不会被触发，这是因为浏览器有<a href="https://dev.opera.com/articles/consistent-event-firing-with-html5-video/" target="_blank" rel="external">尽快加载视频的策略</a></p>
+<h3 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h3><p>一旦视频能自动播放并且美观大方的效果实现后，另一个常见的效果要求是在视频上方显示一个遮罩，使得视频上的内容（标题，文字等）对于用户来说是相当可见和可读的。 这不过是写些简单的 HTML / CSS 而已 ，因此我并没有实现这个作为我 插件 的一部分。 你需要做的是，添加一个覆盖元素到您的容器和样式如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#overlay &#123;</div><div class="line">  position: absolute;</div><div class="line">  top: 0; right: 0; left: 0; bottom: 0;</div><div class="line">   </div><div class="line">  background: rgba(0,0,0,0.5);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这有个例子： <a href="https://codepen.io/rishabhp/pen/MyMGVG" target="_blank" rel="external">Demo</a></p>
+<h3 id="视频封面"><a href="#视频封面" class="headerlink" title="视频封面"></a>视频封面</h3><p>另一个用 HTML/CSS 就可以容易实现的效果就是视频封面。你需要的只是添加一个元素到视频元素后面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;video_cover&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>然后添加 css：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#video_cover &#123;</div><div class="line">  position: absolute;</div><div class="line"> </div><div class="line">  width: 100%; height: 100%;</div><div class="line"> </div><div class="line">  background: url(&apos;video_cover.jpeg&apos;) no-repeat;</div><div class="line">  background-size: cover;</div><div class="line">  background-position: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这有两个重点需要注意：</p>
+<blockquote>
+<ol>
+<li>我们使用了 background-size：cover，这正是我们调整视频大小的代码。 我们的逻辑模拟了 cover 的行为，因为它使视频覆盖了容器的整个宽度或高度，并且超过容器的尺寸被限制。</li>
+<li>我们使用了 background-position：center，因为我们也将视频水平和垂直居中。 假设video_cover.jped 表示视频的第一帧，并且重要的是它能正确的摆放把视频盖住住，这样一旦我们隐藏并播放视频就不会因为各种元素的位置变化而扰乱图像/视频。</li>
+</ol>
+</blockquote>
+<p>影片加载后，即可隐藏此封面。 Bideo.js 接受一个 ==onLoad== 回调，您可以在此处执行此操作。 这个回调在 ==canplay== 事件中执行。</p>
+<h3 id="网速"><a href="#网速" class="headerlink" title="网速"></a>网速</h3><p>在网络连接慢的情况下尽量不要播放视频。这样做的理想方法是使用JavaScript来检测网络速度，然后不播放视频（而是显示图像）。当然，这应该很应该的方式，只要有一个JS浏览器API（当前）给我们的用户的互联网速度或可靠的方式来检测用户的连接速度。但不幸的是，检测用户连接的互联网速度是一项艰巨的任务，大多数时间不可靠。</p>
+<p>为了检测速度，我们必须下载一个相当大的文件（至少5-10mb），这肯定不行。即使我们这样做，DNS查找，数据包交换和用户和目标服务器之间的跳数等因素会使结果（检测到速度）偏移。</p>
+<p>抛开检测用户的连接速度这个方向，如果我们可以实现一个优化的播放方案，假设我们在一段时间内缓冲视频 - 比如说5s ，缓冲完后开始播放，播放完5s 后停止等待下一个 5s 缓冲好的视频再播放。这注意看起来不错。但问题是这个想法很难实现，这是因为浏览器的 api　设计不同造成的。</p>
+<p>即使我们实施了一个逻辑：“加载5s的数据需要多少秒”来决定可接受的加载速度，它可能无法按照您的期望工作，因为我注意到，对于较慢连接chrome（v50）即使有足够的缓冲播放时间（约10-15秒），仍然会阻止回放进入缓存区。（译者注：暂时无法理解这个方法，所以不会翻译这段，为啥要决定可接受的加载速度？？）</p>
+<p>目前还没有办法计算出在给定时间段内加载的视频的内容大小(目的是为了检测速度，用来最终设置可接受的加载速率来播放视频)。</p>
+<p>所以如果你尝试不同的逻辑，你至少会看到在当前的 API 里（视频属性，方法和事件），很难找到一个解决方案。希望今后更容易。</p>
+<h3 id="HTML5视频选项"><a href="#HTML5视频选项" class="headerlink" title="HTML5视频选项"></a>HTML5视频选项</h3><p>我写的插件不支持几个选项（或配置），因为HTML5视频标签本身很受支持。 我基本上是指音量，静音，循环，播放，自动播放等选项。您可以在去 MDN 找到音频/视频方法，事件和属性的详尽列表。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>在网站上整合这种格式的视频时，请务必牢记某些内容：</p>
+<blockquote>
+<ol>
+<li>视频质量应该很好，并使用与您的品牌相关的品质。</li>
+<li>你最有可能会自动播放您的视频，但不会播放声音，因为这可能会让用户感到烦人。 如果需要，请取消静音按钮。</li>
+<li>我建议使用超级压缩视频（原因很明显），长度约为30-60秒。 如果长度太短，那么它可以感觉到奇怪，因为它循环（除非你停止一次玩，这也可能是奇怪的 - 一个短视频停止太早）。</li>
+</ol>
+</blockquote>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p><strong>因此，在主页中或任何其他特定容器中实现全屏幕背景视频超级简单。 只需使用Bideo.js并在几分钟内实现您想要的。 在下面的评论中，让我知道你对插件或用法的看法。</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/JavaScript最佳实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1254,7 +1428,7 @@ alert(dogB.species); // 猫科
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1267,7 +1441,7 @@ alert(dogB.species); // 猫科
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
