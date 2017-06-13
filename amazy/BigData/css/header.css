@@ -3,31 +3,23 @@ body{
     font-family: 微软雅黑;
 
 }
-
 header{
-
-    z-index: 9999;
+    position: relative;
+    z-index: 1000;
 }
 
-
-.navigation.navigation-fixed {
+/*导航栏*/
+.navigation {
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 88888;
-}
 
-
-/*导航栏*/
-.navigation {
     display: block;
     width: 100%;
-    overflow: hidden;
     height: 80px;
     background-color: white;
     font-size: 15px;
-    z-index: 88888;
     color: #000;
 
 }
@@ -54,6 +46,7 @@ header{
     font-weight: bold;
 }
 
+
 /*主菜单*/
 .navigation .menu{
     cursor: pointer;
@@ -63,12 +56,18 @@ header{
     font-weight: bold;
 }
 
-.navigation .menu_item{
-    padding: 30px 15px 30px 15px;
+.navigation .menu .menu_item{
     float: left;
     position: relative;
     transition:background-color .3s cubic-bezier(0,0,0,1);
 }
+.navigation .menu_item .menu_item_link{
+    display: block;
+    padding: 30px 15px 30px 15px;
+    color: #000;
+    text-decoration: none;
+}
+
 .navigation .menu_item a{
     color: #000;
     text-decoration: none;
@@ -77,12 +76,29 @@ header{
 .navigation .menu_item:hover{
     background-color: #f5d341;
 }
-.navigation .menu_item .menu_drop {
+
+/*主菜单的下拉菜单*/
+.navigation .menu .menu_item .menu_drop{
     display: none;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    width: 200px;
 }
-.navigation .menu_item:hover .menu_drop {
+
+.navigation .menu .menu_item:hover .menu_drop {
     display: block;
 }
+
+.navigation .menu .menu_item .menu_drop li{
+    background-color: #f5d341;
+    padding: 20px 0 20px 15px;
+}
+
+.navigation .menu .menu_item .menu_drop li:hover{
+    background-color: #f6d958;
+}
+
 
 .navigation .header_LR{
     height: 80px;
@@ -90,7 +106,7 @@ header{
     font-weight: bold;
     float: right;
     margin-right: 0px;
-    padding-left: 20%;
+
 }
 
 /* 登录注册*/
@@ -102,40 +118,16 @@ header{
     text-decoration: none;
 }
 
-
 .mobile-menu{
     display: none;
     height: 80px;
 }
 
-
 .navigation .header_LR a:hover{
     background-color: #f5d341;
 }
 
-/*主菜单的下拉菜单*/
 
-.navigation .menu_drop{
-    display: block;
-    list-style: none;
-    position: absolute;
-    left: 0;
-    width: 200px;
-}
-
-
-.navigation .menu_item .menu_drop li:nth-child(1){
-    margin: 30px 0 0 0;
-}
-
-.navigation .menu_item .menu_drop li{
-    background-color: #f5d341;
-    padding: 10px 0 10px 10px;
-}
-
-.navigation .menu_item .menu_drop li:hover{
-    background-color: #f6d958;
-}
 
 @media (max-width: 992px) {
     #product_name{
@@ -147,8 +139,7 @@ header{
         margin-left: 30px;
     }
     .navigation{
-        overflow: inherit;
-        position: relative;
+
         width: 100%;
     }
 
@@ -160,7 +151,7 @@ header{
     }
 
     .navigation .menu{
-        /*先隐藏，美观。*/
+
         display: none;
         position: absolute;
         top: 80px;
@@ -175,7 +166,6 @@ header{
 
     .navigation .menu_item{
         float: inherit;
-        padding:15px;
         width: 100%;
         background-color: #f5d341;
         position: relative;
@@ -183,25 +173,32 @@ header{
         border-bottom: 1px solid rgba(0,0,0,.1);
     }
 
-    .navigation .menu_item a{
-        margin-left: 20px;
-
-    }
-
-    .navigation .menu_item .menu_drop{
+    .navigation .menu .menu_item .menu_drop{
+        /*重要！这是区别padding 和 margin 的一个重要例子，如果是设置成 padding 则点击这个padding　点击事件是属于menu_drop 的，*/
+        /*而 margin 的话就属于 menu_item 的*/
+        margin-top: 25px;
         position: relative;
-        /*padding-left: 40px;*/
         float: inherit;
         list-style: none;
         width: 100%;
         background-color: #f5d341;
-        display: none;
     }
-    .navigation .menu_item .menu_drop li:nth-child(1) {
-        margin-top: 15px;!important;
+    .navigation .menu .menu_item .menu_drop a {
+        display: block;
+        height: 100%;
+        width: 100%;
+
     }
 
-    .navigation .menu_item .menu_drop li{
+    .navigation .menu .menu_item:hover .menu_drop {
+       display: none;
+    }
+
+    .navigation .menu .menu_item .menu_drop li:nth-child(1) {
+        margin-top: 0px;!important;
+    }
+
+    .navigation .menu .menu_item .menu_drop li{
         padding: 15px 35px 35px 15px;!important;
         font-size: 15px;
         width: 100%;
@@ -211,6 +208,7 @@ header{
     }
 
     .mobile-menu {
+        margin-right: 10px;
         display: block;
         float:right;
         text-align: center;
@@ -218,15 +216,10 @@ header{
     }
     .mobile-menu #dropdownMenu1{
         margin-top: 20px;
-        font-size: 30px;
+        font-size: 26px;
     }
 
-
-    /*.navigation .menu_item:hover .menu_drop {*/
-        /*display: block;*/
-    /*}*/
-
-    .navigation .menu_item .menu_drop li:hover{
+    .navigation .menu .menu_item .menu_drop li:hover{
         background-color: inherit;
     }
 
@@ -242,12 +235,14 @@ header{
 
 /******第一个章节******/
 .section_1{
+    position: relative;
+    z-index: 999;
     background-image: url(https://powerbicdn.azureedge.net/cvt-9ea9c477d68915c36ed2634e534947539995dd8e33cf5176b3ae3c65c43e786a/pictures/pages/pbi-pattern.png),
     linear-gradient(to top, rgb(255, 210, 13), rgb(242, 200, 17));
     background-size: cover;
-    margin-top: 80px;
-    padding: 30px 0 0 0;
-    position: relative;
+    /*margin-top: 80px;*/
+    padding: 120px 0 0 0;
+
     /*height: 780px;*/
 
     /*什么情况，不加这个只要有 div 就出现浮动*/
