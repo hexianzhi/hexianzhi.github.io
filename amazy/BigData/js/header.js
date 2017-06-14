@@ -318,6 +318,8 @@ $(document).ready(function() {
 
 
     if ($(window).width() < 992) {
+        //禁止移动端视频播放
+        beginPowerDesVideo.unbind("click");
         //对菜单进行移动端交互的处理
         let mobileDropMenu = $(".mobile-menu");
         let Menu = $(".menu");
