@@ -316,129 +316,119 @@ $(document).ready(function() {
 
     });
 
-    function IsPC()
-    {
-        var userAgentInfo = navigator.userAgent;
-        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-        var flag = true;
-        for (var v = 0; v < Agents.length; v++) {
-            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
-        }
-        return flag;
-    }
 
-    //移动端代码！！！！
-   if (!IsPC()){
-       //对菜单进行移动端交互的处理
-       let mobileDropMenu = $(".mobile-menu");
-       let Menu = $(".menu");
-       let UpperRight_dropDown_menu_icon = $(".mobile-menu-icon");
+    if ($(window).width() < 992) {
+        //对菜单进行移动端交互的处理
+        let mobileDropMenu = $(".mobile-menu");
+        let Menu = $(".menu");
+        let UpperRight_dropDown_menu_icon = $(".mobile-menu-icon");
 
-       let isMenuDrop = false;
-       mobileDropMenu.click(function () {
-           if ( !isMenuDrop){
-               UpperRight_dropDown_menu_icon.removeClass("glyphicon-list");
-               UpperRight_dropDown_menu_icon.addClass("glyphicon-remove");
-               UpperRight_dropDown_menu_icon.css("opacity","")
+        let isMenuDrop = false;
+        mobileDropMenu.click(function () {
+            if ( !isMenuDrop){
+                UpperRight_dropDown_menu_icon.removeClass("glyphicon-list");
+                UpperRight_dropDown_menu_icon.addClass("glyphicon-remove");
+                UpperRight_dropDown_menu_icon.css("opacity","")
 
-               Menu.slideDown("300");
+                Menu.slideDown("300");
 
-               isMenuDrop = true;
+                isMenuDrop = true;
 
-           }else {
-               UpperRight_dropDown_menu_icon.removeClass("glyphicon-remove");
-               UpperRight_dropDown_menu_icon.addClass("glyphicon-list");
-               Menu.slideUp("300");
+            }else {
+                UpperRight_dropDown_menu_icon.removeClass("glyphicon-remove");
+                UpperRight_dropDown_menu_icon.addClass("glyphicon-list");
+                Menu.slideUp("300");
 
-               isMenuDrop = false;
-           }
-       });
+                isMenuDrop = false;
+            }
+        });
 
-       let menu_item = Menu.children(".menu_item");
+        let menu_item = Menu.children(".menu_item");
 
-       let previousTag;
-       let is_item_fold = false;
+        let previousTag;
+        let is_item_fold = false;
 
-       // Menu.children().each(function () {
-       //     $(this).click(function () {
-       //         $(this.children.item(1)).slideToggle("300");
-       //         $(this.children.item(1)).slideToggle("300");
-       //     });
-       //
-       // });
+        // Menu.children().each(function () {
+        //     $(this).click(function () {
+        //         $(this.children.item(1)).slideToggle("300");
+        //         $(this.children.item(1)).slideToggle("300");
+        //     });
+        //
+        // });
 
-       // var MenuDropOb = function(el, multiple) {
-       //     this.el = el || {};
-       //     this.multiple = multiple || false;
-       //
-       //     // Variables privadas
-       //     var menu_item = this.el.find('.menu_item');
-       //     // Evento
-       //     menu_item.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-       // }
-       //
-       // MenuDropOb.prototype.dropdown = function(e) {
-       //     var $el = e.data.el;
-       //
-       //     var $this = $(this);
-       //     var $next = $this.next();
-       //
-       //     $next.slideToggle();
-       //
-       //     if (!e.data.multiple) {
-       //         $el.find('.menu_drop').not($next).slideUp();
-       //     };
-       // }
-       //
-       //
-       // var accordion = new MenuDropOb($('.Menu'), false);
+        // var MenuDropOb = function(el, multiple) {
+        //     this.el = el || {};
+        //     this.multiple = multiple || false;
+        //
+        //     // Variables privadas
+        //     var menu_item = this.el.find('.menu_item');
+        //     // Evento
+        //     menu_item.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+        // }
+        //
+        // MenuDropOb.prototype.dropdown = function(e) {
+        //     var $el = e.data.el;
+        //
+        //     var $this = $(this);
+        //     var $next = $this.next();
+        //
+        //     $next.slideToggle();
+        //
+        //     if (!e.data.multiple) {
+        //         $el.find('.menu_drop').not($next).slideUp();
+        //     };
+        // }
+        //
+        //
+        // var accordion = new MenuDropOb($('.Menu'), false);
 
 
-       Menu.click(function (event) {
-           let can_unfold = false;
-           // console.log(event);
-           //根据点击的标签判断是否触发折叠效果
-           if ( event.target && event.target.className ==="menu_item"){
+        Menu.click(function (event) {
+            let can_unfold = false;
+            // console.log(event);
+            //根据点击的标签判断是否触发折叠效果
+            if ( event.target && event.target.className ==="menu_item"){
                 event.target = event.target;
                 can_unfold = true;
-           }
-           if ( event.target && event.target.className ==="menu_item_link")
-           {
-               event.target = event.target.parentNode;
-               can_unfold = true;
-           }
+            }
+            if ( event.target && event.target.className ==="menu_item_link")
+            {
+                event.target = event.target.parentNode;
+                can_unfold = true;
+            }
 
-           console.log(event.target);
-         if (can_unfold){
+            console.log(event.target);
+            if (can_unfold){
 
-             //收起除了此菜单其他菜单的子菜单。
-             let not_event = $(event.target.parentNode).find('.menu_item').not($(event.target));
-             not_event.find('.menu_drop').each(function () {
-                 $( this ).slideUp("300");
-             })
+                //收起除了此菜单其他菜单的子菜单。
+                let not_event = $(event.target.parentNode).find('.menu_item').not($(event.target));
+                not_event.find('.menu_drop').each(function () {
+                    $( this ).slideUp("300");
+                })
 
-             // 用两个点实现折叠与展开功能。
-             if (previousTag === event.target){
-                 is_item_fold = !is_item_fold;
-             }else {
-                 is_item_fold = false;
-             }
+                // 用两个点实现折叠与展开功能。
+                if (previousTag === event.target){
+                    is_item_fold = !is_item_fold;
+                }else {
+                    is_item_fold = false;
+                }
 
-             if (!is_item_fold){
-                $(event.target.children.item(1)).slideDown("300");
-             }else {
-                 $(event.target.children.item(1)).slideUp("300");
-             }
+                if (!is_item_fold){
+                    $(event.target.children.item(1)).slideDown("300");
+                }else {
+                    $(event.target.children.item(1)).slideUp("300");
+                }
 
-             previousTag = event.target;
-         }
+                previousTag = event.target;
+            }
 
-       });
-
-
+        });
 
 
-   }
+    }
+    else {
+        console.log('More than 960');
+    }
 
 
 
