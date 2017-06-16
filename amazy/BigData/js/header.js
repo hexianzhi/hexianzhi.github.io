@@ -29,7 +29,7 @@ $(document).ready(function() {
     // mask.css("display");
 
     /**
-     * 坑！top 是保留关键字
+     * 坑！top...作为变量名居然g 了
      */
     function close() {
         if (!checkIsFloat()) {

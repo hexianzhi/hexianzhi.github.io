@@ -5,44 +5,41 @@ body{
 }
 
 header{
-    z-index: 9999;
+    position: relative;
+    z-index: 1000;
 }
 
-.animated{
-    animation-duration: 1s;
-}
-
-.navigation-fixed{
+/*导航栏*/
+.navigation {
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 88888;
-}
-/*导航栏*/
-.navigation{
-    display: block;
 
+    display: block;
+    width: 100%;
     height: 80px;
     background-color: white;
-    /*position: relative;*/
     font-size: 15px;
-    z-index: 88888;
     color: #000;
 
 }
+.navigation-container{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navigation .icon_container{
     float: left;
-    /*left: 100px;*/
-    /*position: absolute;*/
-    margin-left: 200px;
     margin-top:30px;
 }
 
 
 .navigation #product_name{
+    float: left;
     cursor: pointer;
-    position: absolute;
+
     border-left: 3px solid gainsboro;
     margin-left: 30px;
     padding-left: 20px;
@@ -50,24 +47,28 @@ header{
     font-weight: bold;
 }
 
+
 /*主菜单*/
 .navigation .menu{
     cursor: pointer;
     float: left;
-    /*position: absolute;*/
-    /*left: 450px;*/
-    margin-left: 150px;
+    margin-left: 60px;
     list-style: none;
     font-weight: bold;
 }
 
-.navigation .menu_item{
-    padding: 30px 15px 30px 15px;
-
+.navigation .menu .menu_item{
     float: left;
     position: relative;
     transition:background-color .3s cubic-bezier(0,0,0,1);
 }
+.navigation .menu_item .menu_item_link{
+    display: block;
+    padding: 30px 15px 30px 15px;
+    color: #000;
+    text-decoration: none;
+}
+
 .navigation .menu_item a{
     color: #000;
     text-decoration: none;
@@ -76,60 +77,161 @@ header{
 .navigation .menu_item:hover{
     background-color: #f5d341;
 }
-.navigation .menu_item .menu_drop {
-    display: none;
-}
-.navigation .menu_item:hover .menu_drop {
-    display: block;
-}
-.navigation .header_LR{
-    height: 80px;
-    cursor: pointer;
-    font-weight: bold;
-    float: right;
-    margin-right: 200px;
-    /*position: absolute;*/
-    /*right: 300px;*/
-}
-
-/* 登录注册*/
-.navigation .header_LR a{
-    float:left;
-    padding:30px 15px 30px 15px;
-    transition:background-color .25s cubic-bezier(0,0,0,1);
-    color: #000;
-    text-decoration: none;
-}
-
-.navigation .header_LR a:hover{
-    background-color: #f5d341;
-}
 
 /*主菜单的下拉菜单*/
-
-.navigation .menu_drop{
-    display: block;
+.navigation .menu .menu_item .menu_drop{
+    display: none;
     list-style: none;
     position: absolute;
     left: 0;
     width: 200px;
 }
 
-
-.navigation .menu_drop li:nth-child(1){
-    margin: 30px 0 0 0;
+.navigation .menu .menu_item:hover .menu_drop {
+    display: block;
 }
 
-.navigation .menu_drop li{
+.navigation .menu .menu_item .menu_drop li{
     background-color: #f5d341;
-    padding: 10px 0 10px 10px;
+    padding: 20px 0 20px 15px;
 }
 
-.navigation .menu_drop li:hover{
+.navigation .menu .menu_item .menu_drop li:hover{
+    background-color: #f6d958;
+}
+
+
+.navigation .header_LR{
+    height: 80px;
+    cursor: pointer;
+    font-weight: bold;
+    float: right;
+    margin-right: 0px;
 
 }
 
-/******************************************导航栏结尾****************************************************************/
+/* 登录注册*/
+.navigation .header_LR a{
+    float:right;
+    padding:30px 15px 30px 15px;
+    transition:background-color .25s cubic-bezier(0,0,0,1);
+    color: #000;
+    text-decoration: none;
+}
+
+.mobile-menu{
+    display: none;
+    height: 80px;
+}
+
+.navigation .header_LR a:hover{
+    background-color: #f5d341;
+}
+
+
+
+@media (max-width: 992px) {
+    #product_name{
+        display: none;
+    }
+    .icon_container{
+        display: block;
+        float: inherit;
+        margin-left: 30px;
+    }
+    .navigation{
+
+        width: 100%;
+    }
+
+    .navigation-container{
+        width: 100%;
+        max-width: inherit;
+        position: relative;
+        margin-left: inherit;
+    }
+
+    .navigation .menu{
+
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        margin: 0;
+
+        width: 100%;
+        cursor: pointer;
+        list-style: none;
+        background-color: #f5d341;
+    }
+
+    .navigation .menu_item{
+        float: inherit;
+        width: 100%;
+        background-color: #f5d341;
+        position: relative;
+        transition:background-color .3s cubic-bezier(0,0,0,1);
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .navigation .menu .menu_item .menu_drop{
+        /*重要！这是区别padding 和 margin 的一个重要例子，如果是设置成 padding 则点击这个padding　点击事件是属于menu_drop 的，*/
+        /*而 margin 的话就属于 menu_item 的*/
+        margin-top: 25px;
+        position: relative;
+        float: inherit;
+        list-style: none;
+        width: 100%;
+        background-color: #f5d341;
+    }
+    .navigation .menu .menu_item .menu_drop a {
+        display: block;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .navigation .menu .menu_item:hover .menu_drop {
+        display: none;
+    }
+
+    .navigation .menu .menu_item .menu_drop li:nth-child(1) {
+        margin-top: 0px;!important;
+    }
+
+    .navigation .menu .menu_item .menu_drop li{
+        padding: 15px 35px 35px 15px;!important;
+        font-size: 15px;
+        width: 100%;
+        list-style: none;
+        background-color: #f5d341;
+        font-weight: 400;
+    }
+
+    .mobile-menu {
+        margin-right: 10px;
+        display: block;
+        float:right;
+        text-align: center;
+        background-color: white;
+    }
+    .mobile-menu #dropdownMenu1{
+        margin-top: 20px;
+        font-size: 26px;
+    }
+
+    .navigation .menu .menu_item .menu_drop li:hover{
+        background-color: inherit;
+    }
+
+    .header_LR{
+        display: none;
+    }
+
+}
+
+
+/******************************************第一个章节****************************************************************/
 .apartment_des{
     height: 200px;
     background-color: #f2c811;
