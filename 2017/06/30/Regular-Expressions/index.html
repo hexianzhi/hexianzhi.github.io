@@ -1,0 +1,736 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在 JavaScript中，正则表达式也是对象。  如何创建一个正则表达式？方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：1const regex = /abc/; 方法二：调用RegExp对象的构造函数1let regex = new RegExp(&amp;quot;ab+c&amp;quot;);// 本文不对 RegExp对象 做介绍 如何使用？方法一：简单模式，由简单的字符">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从现实需求理解正则表达式">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/Regular-Expressions/index.html">
+<meta property="og:site_name" content="歌顿">
+<meta property="og:description" content="在 JavaScript中，正则表达式也是对象。  如何创建一个正则表达式？方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：1const regex = /abc/; 方法二：调用RegExp对象的构造函数1let regex = new RegExp(&amp;quot;ab+c&amp;quot;);// 本文不对 RegExp对象 做介绍 如何使用？方法一：简单模式，由简单的字符">
+<meta property="og:updated_time" content="2017-06-30T10:57:42.090Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从现实需求理解正则表达式">
+<meta name="twitter:description" content="在 JavaScript中，正则表达式也是对象。  如何创建一个正则表达式？方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：1const regex = /abc/; 方法二：调用RegExp对象的构造函数1let regex = new RegExp(&amp;quot;ab+c&amp;quot;);// 本文不对 RegExp对象 做介绍 如何使用？方法一：简单模式，由简单的字符">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/30/Regular-Expressions/"/>
+
+
+
+
+
+  <title> 从现实需求理解正则表达式 | 歌顿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">歌顿</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Regular-Expressions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歌顿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歌顿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从现实需求理解正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T18:57:22+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在 JavaScript中，正则表达式也是对象。</p>
+</blockquote>
+<h2 id="如何创建一个正则表达式？"><a href="#如何创建一个正则表达式？" class="headerlink" title="如何创建一个正则表达式？"></a>如何创建一个正则表达式？</h2><h3 id="方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示："><a href="#方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：" class="headerlink" title="方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示："></a>方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const regex = /abc/;</div></pre></td></tr></table></figure>
+<h3 id="方法二：调用RegExp对象的构造函数"><a href="#方法二：调用RegExp对象的构造函数" class="headerlink" title="方法二：调用RegExp对象的构造函数"></a>方法二：调用RegExp对象的构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let regex = new RegExp(&quot;ab+c&quot;);// 本文不对 RegExp对象 做介绍</div></pre></td></tr></table></figure>
+<h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><h3 id="方法一：简单模式，由简单的字符所构成的。如-abc"><a href="#方法一：简单模式，由简单的字符所构成的。如-abc" class="headerlink" title="方法一：简单模式，由简单的字符所构成的。如 /abc/"></a>方法一：简单模式，由简单的字符所构成的。如 /abc/</h3><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual = /13566668888/.test(value);</div></pre></td></tr></table></figure>
+<p>只要 <strong>value</strong> 含有  “13566668888” 这串数字，isEqual 就为 true。</p>
+<h3 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a><a href="http://jsbin.com/nanihodeni/edit?html,output/" target="_blank" rel="external">Demo地址</a></h3><h3 id="方法二：-使用特殊字符，如-abc"><a href="#方法二：-使用特殊字符，如-abc" class="headerlink" title="方法二： 使用特殊字符，如 /^abc$/"></a>方法二： 使用特殊字符，如 /^abc$/</h3><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual = /^13566668888/.test(value)</div></pre></td></tr></table></figure>
+<p>只要 <strong>value</strong> 开头前9个字符前必须是 “13566668888”，isEqual 才为 true，</p>
+<h3 id="Demo地址-1"><a href="#Demo地址-1" class="headerlink" title="Demo地址"></a><a href="http://jsbin.com/ziruxogozi/1/edit?html,output/" target="_blank" rel="external">Demo地址</a></h3><blockquote>
+<p>平时开发中，常用的是特殊字符。</p>
+</blockquote>
+<h3 id="特殊字符："><a href="#特殊字符：" class="headerlink" title="特殊字符：$"></a>特殊字符：$</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual = /13566668888$/.test(value);</div></pre></td></tr></table></figure>
+<p>只要当 value 后面9个字符是 “13566668888” ，isEqual 就为 true;</p>
+<h3 id="Demo地址-2"><a href="#Demo地址-2" class="headerlink" title="Demo地址"></a><a href="http://jsbin.com/ducumuxezo/1/edit?html,output" target="_blank" rel="external">Demo地址</a></h3><h3 id="需求1"><a href="#需求1" class="headerlink" title="需求1"></a>需求1</h3><blockquote>
+<p>如何匹配一个9个数字的手机号码？</p>
+</blockquote>
+<p>方法一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual = /^1[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/.test(value);</div></pre></td></tr></table></figure>
+<p>其中方括号”[]” 表示查找方括号之间的任何字符，方括号里面 0-9 表示在 0到9的数字都可以匹配到，对于 [a-z] 同样，可以匹配到字符 a 到字符 z之间的任意字符。</p>
+<p>但显然这个方式很繁琐。</p>
+<p><strong>元字符：\d</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual =  /^1\d\d\d\d\d\d\d\d\d\d$/.test(value);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>元字符：”\d” 表示数字，但还是很繁琐。。</p>
+</blockquote>
+<p><strong>量词</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual =  /^1\d&#123;10&#125;$/.test(value);</div></pre></td></tr></table></figure>
+<p>  \d{10} 表示匹配包含10个数字的字符串，n{X}    匹配包含 X 个 n 的序列的字符串</p>
+<h3 id="需求2"><a href="#需求2" class="headerlink" title="需求2"></a>需求2</h3><blockquote>
+<p>如何匹配邮箱？</p>
+</blockquote>
+<p>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual =  /.+@163\.com$/.test(value);</div></pre></td></tr></table></figure></p>
+<p>知识点: 元字符 + 量词 + 转移符</p>
+<blockquote>
+<p>“.” 表示查找单个字符</p>
+<p>“+” 表示匹配任何包含至少一个 n 的字符串。</p>
+<p>“\ .” 反斜杠表示将其后的特殊字符转义为字面量。</p>
+</blockquote>
+<p>因此上述正则表达式的意思是，先匹配 n个字符串，然后再匹配 @163，等将小数点”.” 转义后，再匹配 “.com” 结尾，这样就能完成匹配一个邮箱的需求。</p>
+<h3 id="Demo地址-3"><a href="#Demo地址-3" class="headerlink" title="Demo地址"></a><a href="http://jsbin.com/tuqixojumo/1/edit?html,output" target="_blank" rel="external">Demo地址</a></h3><h3 id="需求3"><a href="#需求3" class="headerlink" title="需求3"></a>需求3</h3><blockquote>
+<p>那如何匹配不同的邮箱呢？</p>
+</blockquote>
+<p>方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isEqual = /(.+)@(163|126|188)\.com$/.test(value);</div></pre></td></tr></table></figure>
+<p>知识点：</p>
+<blockquote>
+<p>(.+), 匹配 ‘.+’ 并且记住匹配项，括号被称为捕获括号。</p>
+<p>(163|126|188)，“|” 表示匹配‘163’或者‘188’。</p>
+</blockquote>
+<h4 id="本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。"><a href="#本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。" class="headerlink" title="本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。"></a>本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。</h4><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp" target="_blank" rel="external">W3c-正则表达式</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="external">MDN-正则表达式</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/12/fullScreen-backgrund-video/" rel="prev" title="HTML5全屏背景视频与 CSS 和 JS（插件或库）">
+                HTML5全屏背景视频与 CSS 和 JS（插件或库） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="歌顿" />
+          <p class="site-author-name" itemprop="name">歌顿</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建一个正则表达式？"><span class="nav-number">1.</span> <span class="nav-text">如何创建一个正则表达式？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示："><span class="nav-number">1.1.</span> <span class="nav-text">方法一：使用一个正则表达式字面量，其由包含在斜杠之间的模式组成，如下所示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：调用RegExp对象的构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">方法二：调用RegExp对象的构造函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用？"><span class="nav-number">2.</span> <span class="nav-text">如何使用？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：简单模式，由简单的字符所构成的。如-abc"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：简单模式，由简单的字符所构成的。如 /abc/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo地址"><span class="nav-number">2.2.</span> <span class="nav-text">Demo地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：-使用特殊字符，如-abc"><span class="nav-number">2.3.</span> <span class="nav-text">方法二： 使用特殊字符，如 /^abc$/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo地址-1"><span class="nav-number">2.4.</span> <span class="nav-text">Demo地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符："><span class="nav-number">2.5.</span> <span class="nav-text">特殊字符：$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo地址-2"><span class="nav-number">2.6.</span> <span class="nav-text">Demo地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求1"><span class="nav-number">2.7.</span> <span class="nav-text">需求1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求2"><span class="nav-number">2.8.</span> <span class="nav-text">需求2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo地址-3"><span class="nav-number">2.9.</span> <span class="nav-text">Demo地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求3"><span class="nav-number">2.10.</span> <span class="nav-text">需求3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。"><span class="nav-number">2.10.1.</span> <span class="nav-text">本文从三个需求入手，带领读者直观地感受正则表达式对于匹配字符串的作用。更多的特殊字符的用法请参考文档即可。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.11.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">歌顿</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
