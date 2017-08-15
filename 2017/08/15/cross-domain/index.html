@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
+<meta name="description" content="1. 为什么要研究这个问题： 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。  2. 什么叫跨域？ 当一个资源从与该资源本身所在的服务器不同的域或端口不同的域或不同的端口请求一个资源时，资源会发起一个跨域 HTTP 请求。 比如，站点 http://domain-a.com 的某 HTML 页面通过  的 src 请求 http:/">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="表单（待填">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/表单/index.html">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/cross-domain/index.html">
 <meta property="og:site_name" content="歌顿">
-<meta property="og:description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
-<meta property="og:updated_time" content="2017-04-24T16:33:05.305Z">
+<meta property="og:description" content="1. 为什么要研究这个问题： 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。  2. 什么叫跨域？ 当一个资源从与该资源本身所在的服务器不同的域或端口不同的域或不同的端口请求一个资源时，资源会发起一个跨域 HTTP 请求。 比如，站点 http://domain-a.com 的某 HTML 页面通过  的 src 请求 http:/">
+<meta property="og:updated_time" content="2017-08-15T15:19:01.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="表单（待填">
-<meta name="twitter:description" content="表单的基础知识 提交表单  重置表单  表单字段  共有的表单字段属性  共有的表单字段方法  共有的表单字段事件    文本框脚本 选择文本  选择事件  取得选择的文本  选择部分文本     过滤输入  屏蔽字符  操作剪贴板（跳过）    自动切换焦点  H5约束验证 API  必填字段  其他输入类型  检测有效性 禁用验证    选择框脚本 选择选项  添加选项  移除选项 移动和重拍">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="1. 为什么要研究这个问题： 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。  2. 什么叫跨域？ 当一个资源从与该资源本身所在的服务器不同的域或端口不同的域或不同的端口请求一个资源时，资源会发起一个跨域 HTTP 请求。 比如，站点 http://domain-a.com 的某 HTML 页面通过  的 src 请求 http:/">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/25/表单/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/cross-domain/"/>
 
 
 
 
 
-  <title> 表单（待填 | 歌顿 </title>
+  <title> 跨域 | 歌顿 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/表单/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/cross-domain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="歌顿">
@@ -291,7 +291,7 @@
             
             
               
-                表单（待填
+                跨域
               
             
           </h1>
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T00:32:32+08:00">
-                2017-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T23:18:22+08:00">
+                2017-08-15
               </time>
             
 
@@ -342,63 +342,34 @@
       
 
       
-        <h3 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h3><ul>
-<li><p>提交表单</p>
-</li>
-<li><p>重置表单</p>
-</li>
-<li><p>表单字段</p>
+        <h3 id="1-为什么要研究这个问题："><a href="#1-为什么要研究这个问题：" class="headerlink" title="1. 为什么要研究这个问题："></a>1. 为什么要研究这个问题：</h3><blockquote>
+<p>浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。</p>
+</blockquote>
+<h3 id="2-什么叫跨域？"><a href="#2-什么叫跨域？" class="headerlink" title="2. 什么叫跨域？"></a>2. 什么叫跨域？</h3><blockquote>
+<p>当一个资源从与该资源本身所在的服务器不同的域或端口不同的域或不同的端口请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
+<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="external">http://domain-a.com</a> 的某 HTML 页面通过 <img> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="external">http://domain-b.com/image.jpg。</a></p>
+</blockquote>
+<p>TIPS：跨域请求并非是浏览器限制了发起跨站请求，而是请求可以正常发起，到达服务器端，但是服务器返回的结果会被浏览器拦截。</p>
+<h3 id="3-怎么解决？"><a href="#3-怎么解决？" class="headerlink" title="3.怎么解决？"></a>3.怎么解决？</h3><h4 id="3-1-通过JSONP跨域"><a href="#3-1-通过JSONP跨域" class="headerlink" title="3.1 通过JSONP跨域"></a>3.1 通过JSONP跨域</h4><p>基本原理：网页通过添加一个<script>元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function todo(data)&#123;</div><div class="line">  console.log(&apos;The author is: &apos;+ data.name);</div><div class="line">&#125;</div><div class="line">var script = document.createElement(&apos;script&apos;);</div><div class="line">script.src = &apos;http://www.jianshu.com/author?callback=todo&apos;;//向服务器www.jianshu.com发出请求。注意，该请求的查询字符串有一个callback参数，用来指定回调函数的名字。</div><div class="line">document.body.appendChild(script);</div><div class="line">//服务器收到这个请求以后，会将数据放在回调函数的参数位置返回。</div><div class="line">todo(&#123;&quot;name&quot;: &quot;fewjq&quot;&#125;);</div><div class="line">//由于&lt;script&gt;元素请求的脚本，直接作为代码运行。这时，只要浏览器定义了todo函数，该函数就会立即调用。作为参数的JSON数据被视为JavaScript对象。</div></pre></td></tr></table></figure>
+<p><strong>优点：简单适用，老式浏览器全部支持，服务器改造小。不需要XMLHttpRequest或ActiveX的支持。<br>缺点：只支持GET请求。</strong></p>
+<h4 id="3-2-通过CORS跨域"><a href="#3-2-通过CORS跨域" class="headerlink" title="3.2 通过CORS跨域"></a>3.2 通过CORS跨域</h4><pre><code>跨源资源共享（Cross-Origin Resource Sharing ) 
+</code></pre><p>所有浏览器都支持该功能，IE浏览器不能低于IE10,通过 XMLHttpRequest 对象发起。可以把CORS分为：简单请求、预请求和附带凭证信息的请求。</p>
 <ul>
-<li><p>共有的表单字段属性</p>
-</li>
-<li><p>共有的表单字段方法</p>
-</li>
-<li>共有的表单字段事件</li>
-</ul>
+<li>简单请求<blockquote>
+<p>（1）只使用 GET, HEAD 或者 POST 请求方法。如果使用 POST 向服务器端传送数据，则数据类型(Content-Type)只能是 application/x-www-form-urlencoded, multipart/form-data 或 text/plain中的一种。<br>（2）不会使用自定义请求头（类似于 X-Modified 这种）。</p>
+</blockquote>
 </li>
 </ul>
-<h3 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h3><ul>
-<li><p>选择文本</p>
+<p>这种方式只要服务端把 response 的 header 头中设置 Access-Control-Allow-Origin 制定为可请求当前域名下数据的域名即可。一般情况下设为 * 即可。这样客户端就不需要使用jsonp来获取数据。</p>
 <ul>
-<li><p>选择事件</p>
+<li><p>预请求<br>//TODO</p>
 </li>
-<li><p>取得选择的文本</p>
-</li>
-<li>选择部分文本</li>
-</ul>
+<li><p>附带凭证信息的请求。//TODO</p>
 </li>
 </ul>
-<ul>
-<li><p>过滤输入</p>
-<ul>
-<li><p>屏蔽字符</p>
-</li>
-<li><p>操作剪贴板（跳过）</p>
-</li>
-</ul>
-</li>
-<li><p>自动切换焦点</p>
-</li>
-<li><p>H5约束验证 API</p>
-<ul>
-<li><p>必填字段</p>
-</li>
-<li><p>其他输入类型</p>
-</li>
-<li>检测有效性</li>
-<li>禁用验证</li>
-</ul>
-</li>
-</ul>
-<h3 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h3><ul>
-<li><p>选择选项</p>
-</li>
-<li><p>添加选项</p>
-</li>
-<li>移除选项</li>
-<li>移动和重拍选项</li>
-</ul>
-<h3 id="表单序列化"><a href="#表单序列化" class="headerlink" title="表单序列化"></a>表单序列化</h3><h3 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h3>
+<p><strong>CORS的优点：CORS支持所有类型的HTTP请求，是跨域HTTP请求的根本解决方案。</strong></p>
+</script></p>
       
     </div>
 
@@ -434,18 +405,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/27/JavaScript原型/" rel="next" title="JavaScript原型及原型链">
-                <i class="fa fa-chevron-left"></i> JavaScript原型及原型链
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/23/事件类型-1/" rel="prev" title="事件类型总结">
-                事件类型总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/14/create-object/" rel="prev" title="create-object">
+                create-object <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -566,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单的基础知识"><span class="nav-number">1.</span> <span class="nav-text">表单的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本框脚本"><span class="nav-number">2.</span> <span class="nav-text">文本框脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择框脚本"><span class="nav-number">3.</span> <span class="nav-text">选择框脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单序列化"><span class="nav-number">4.</span> <span class="nav-text">表单序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#富文本编辑"><span class="nav-number">5.</span> <span class="nav-text">富文本编辑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么要研究这个问题："><span class="nav-number">1.</span> <span class="nav-text">1. 为什么要研究这个问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-什么叫跨域？"><span class="nav-number">2.</span> <span class="nav-text">2. 什么叫跨域？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-怎么解决？"><span class="nav-number">3.</span> <span class="nav-text">3.怎么解决？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-通过JSONP跨域"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 通过JSONP跨域</span></a></li></ol></li></ol></div>
             
 
           </div>
