@@ -344,7 +344,8 @@
       
         
           
-            <h2 id="为什要使用WebPack"><a href="#为什要使用WebPack" class="headerlink" title="为什要使用WebPack"></a>为什要使用WebPack</h2><p>现今的很多网页其实可以看做是功能丰富的应用，它们拥有着复杂的JavaScript代码和一大堆依赖包。为了简化开发的复杂度，前端社区涌现出了很多好的实践方法，比如说 模块化，Scss 和 less等CSS预处理器。</p>
+            <p>源码链接： <a href="https://github.com/hexianzhi/Baidu_ife/tree/master/webpack-test" target="_blank" rel="external">点我点我</a></p>
+<h2 id="为什要使用WebPack"><a href="#为什要使用WebPack" class="headerlink" title="为什要使用WebPack"></a>为什要使用WebPack</h2><p>现今的很多网页其实可以看做是功能丰富的应用，它们拥有着复杂的JavaScript代码和一大堆依赖包。为了简化开发的复杂度，前端社区涌现出了很多好的实践方法，比如说 模块化，Scss 和 less等CSS预处理器。</p>
 <p>这些改进大大提高了我们的开发效率，但是利用它们开发的文件往往需要进行额外的处理才能让浏览器识别,而手动处理又是非常繁琐而且麻烦，这就为WebPack类的工具的出现提供了需求。</p>
 <h2 id="什么是Webpack"><a href="#什么是Webpack" class="headerlink" title="什么是Webpack"></a>什么是Webpack</h2><p>WebPack可以看做是模块打包机：它做的事情是，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。</p>
 <h2 id="开始使用Webpack"><a href="#开始使用Webpack" class="headerlink" title="开始使用Webpack"></a>开始使用Webpack</h2><p>千言万语不如实际操作一番，你会发现 webpack 不过如此。</p>
@@ -379,11 +380,12 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1031000-6cf1ecc41ef8c31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>说明我们已经成功用 webpack 打包了一个文件！但是我们一个项目中不仅仅打包一个文件这么简单，因此我们需要配置文件来处理复杂的开发需求。</p>
 <h2 id="通过配置文件来使用Webpack"><a href="#通过配置文件来使用Webpack" class="headerlink" title="通过配置文件来使用Webpack"></a>通过配置文件来使用Webpack</h2><p>当前练习文件夹的根目录下新建一个名为 <strong><em>webpack</em>.config.js</strong> 的文件，我们在其中写入如下所示的简单配置代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry:  &quot;./app/main.js&quot;,  //唯一入口文件</div><div class="line">  output: &#123;</div><div class="line">    path:  &quot;/public&quot;,       //打包后的文件存放路径</div><div class="line">    filename: &quot;bundle.js&quot;       //打包后输出文件的文件名</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">module.exports = &#123;</div><div class="line">  entry:  &quot;./app/main.js&quot;,  //唯一入口文件</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;public&apos;), //打包后的文件存放的地方</div><div class="line">    filename: &apos;bundle.js&apos;            //打包后输出文件的文件名</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>有了这个配置之后，再打包文件，只需在终端里运行webpack命令就可以了，这条命令会自动引用 <strong><em>webpack</em>.config.js</strong> 文件中的配置选项。</p>
-<h2 id="执行打包任务的快捷方式"><a href="#执行打包任务的快捷方式" class="headerlink" title="执行打包任务的快捷方式"></a>执行打包任务的快捷方式</h2><p>我们还可以建立一个快捷方式，避免以后可能会敲错一些复杂命令。</p>
+<h2 id="NPM-脚本-NPM-Scripts"><a href="#NPM-脚本-NPM-Scripts" class="headerlink" title="NPM 脚本(NPM Scripts)"></a>NPM 脚本(NPM Scripts)</h2><p>考虑到用 CLI 这种方式来运行本地的 webpack 不是特别方便，我们可以设置一个快捷方式。在 package.json 添加一个 npm 脚本(npm script)：</p>
 <p><strong><em>package</em>.json</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后我们可以执行 <strong><em>npm run build</em></strong> 来打包项目。</p>
 <p>webpack 基础功能就是如此，但是 webpack 这时候还是一个残缺品，因为它只能处理 js 文件，还不能处理 css、less 或者图片等，Webpack 是通过一个叫 loader 的东西来解决这个问题。 </p>
 <h2 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h2><p><strong>默认情况下 webpack 只认识js文件，如果你在 js 中 require 进一个 css 模块是无法打包成功的，这时候 loaders 出现了，它的作用就是将 css/scss/jpg 等文件转换成 module 并添加到依赖图中。</strong></p>
 <h3 id="使用-loaders"><a href="#使用-loaders" class="headerlink" title="使用 loaders"></a>使用 loaders</h3><p>Loaders 需要单独安装并且需要在 webpack.config.js 中的 modules 关键字下进行配置，下面以 style-loader 为例。</p>
@@ -404,6 +406,56 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const commonCss = require(&apos;./css/common.css&apos;);</div><div class="line"></div><div class="line">const greeter = require(&apos;./Greeter.js&apos;);</div><div class="line">document.querySelector(&quot;#root&quot;).appendChild(greeter());</div></pre></td></tr></table></figure>
 <p>运行 npm start 后再打开 index.html ，发现字体颜色已经变成红色。</p>
 <p>读者可以尝试将 style-loader 去掉看看报错信息。</p>
+<p>还有图片loader、font loader 等等都可以在官网的教程中提到：<br><a href="https://webpack.js.org/guides/asset-management/" target="_blank" rel="external">Webpack-guide</a></p>
+<p>Webpack 不仅仅有 loader，还有另一个强大的功能——plugin</p>
+<h2 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h2><p><strong>插件（Plugins）</strong>：用来拓展Webpack功能的，它们会在整个构建过程中生效，执行相关的任务。</p>
+<h3 id="与loader-的比较"><a href="#与loader-的比较" class="headerlink" title="与loader 的比较"></a>与loader 的比较</h3><p>Loaders和Plugins常常被弄混，但是他们其实是完全不同的东西，可以这么来说，loaders是在打包构建过程中用来处理源文件的（Scss，Less..），一次处理一个，插件并不直接操作单个文件，它直接对整个构建过程其作用。</p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><p>比如说 webpack-dev-server 插件，该插件提供了一个简易的 web Server 和热更新功能。</p>
+<ol>
+<li>安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev webpack-dev-server</div></pre></td></tr></table></figure>
+<ol>
+<li>webpack.config.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">devServer: &#123;</div><div class="line">  contentBase: &quot;./public&quot;,//本地服务器所加载的页面所在的目录</div><div class="line">  hot: true               //开启热更新功能</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>package.json</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     &quot;scripts&quot;: &#123;</div><div class="line">        &quot;start&quot;: &quot;webpack-dev-server --open&quot;</div><div class="line">     &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 我们在命令行中输入 <em>npm start</em> 后，会看到浏览器自动加载我们的页面。如果改变了源代码，web server 会在编译后自动重载页面，也就是热更新功能。</p>
+<p> PS：webpack-dev-middleware 内置于 webpack-dev-server  中，但它是一个独立的插件，用处是将 webpack 处理过的文件发送给服务器。我们抛弃  webpack-dev-server 插件，运用 webpack-dev-middleware 插件能够获得更多自定义的设置。比如说跟 express 服务器结合。其中 vue-cli 的脚手架就是这么做的。其中的好处待研究，官网有教程。</p>
+<hr>
+<h3 id="以上内容解释了什么是-loader-和-plugin，但是日常项目中我们会遇到多页面的情况，解决这个问题我们就需要了解-Entry-这个概念。"><a href="#以上内容解释了什么是-loader-和-plugin，但是日常项目中我们会遇到多页面的情况，解决这个问题我们就需要了解-Entry-这个概念。" class="headerlink" title="以上内容解释了什么是 loader 和 plugin，但是日常项目中我们会遇到多页面的情况，解决这个问题我们就需要了解 Entry 这个概念。"></a>以上内容解释了什么是 loader 和 plugin，但是日常项目中我们会遇到多页面的情况，解决这个问题我们就需要了解 Entry 这个概念。</h3><hr>
+<h2 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h2><p>Webpack 创建了一个包含所有依赖的图，这个图的起点就是 entry point。entry point 告诉 webpack 在依赖图中的打包起始点和打包内容。你可以将 entry 看做是 webpack 打包的起始点。</p>
+<p>一个最简单的例子就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry:  &quot;./app/main.js&quot;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多页面"><a href="#多页面" class="headerlink" title="多页面"></a>多页面</h3><p>现在来解决我们多页面开发的问题</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>在 app 目录下新增一个 hello.js 文件，在 public 文件下新增一个 temple.html 文件。</p>
+<p><strong>hello.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.querySelector(&quot;#root&quot;).style.color = &apos;red&apos;;;</div></pre></td></tr></table></figure></p>
+<p><strong><em>temple.html</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;Sample 2&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line"></div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&apos;root&apos;&gt;</div><div class="line">    hello world</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="开始配置"><a href="#开始配置" class="headerlink" title="开始配置"></a>开始配置</h3><ol>
+<li>多入口 Entry 配置信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    app:&apos;./app/main.js&apos;,</div><div class="line">    hello: &apos;./app/hello.js&apos;</div><div class="line">  &#125;，</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;public&apos;), //打包后的文件存放的地方</div><div class="line">    filename: &apos;[name].bundle.js&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通过 <em>npm run build</em> 命令可以发现生成了 app.bundle.js 和 hello.bunlde.js 文件，我们打开 public 文件夹下面的生成的  html 文件就可以看到分别打包后效果。</p>
+<ol>
+<li>HtmlWebpackPlugin</li>
+</ol>
+<p>为了避免每次都要在 html 文件中修改 js 名称和路径，有一个 HtmlWebpackPlugin 帮助我们自动化了这个过程。</p>
+<p>2.1 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev html-webpack-plugin</div></pre></td></tr></table></figure>
+<p>2.2 <strong>webpack.config.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">   plugins: [</div><div class="line">   // OccurenceOrderPlugin is needed for webpack 1.x only</div><div class="line">  </div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: &apos;temple.html&apos;, //模板文件</div><div class="line">     chunks: [&apos;app&apos;]   //设置未入口的配置的字段</div><div class="line">   &#125;),</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: &apos;temple.html&apos;,</div><div class="line">     chunks: [&apos;hello&apos;],</div><div class="line">     filename: &apos;index-2.html&apos;</div><div class="line">   &#125;)</div><div class="line"> ],</div></pre></td></tr></table></figure>
+<p><strong>注意：根据官网的解释，我们想要生成 html 页面的数量要等于 HtmlWebpackPlugin 的数量</strong><br> 执行 npm run start，可以看出在 public 文件夹下生成了两个文件：index.html 和 index-2.html。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们简单的过了一遍 Webpack 的使用场景、如何使用的问题，以及重要概念如 loader，plugin 和 entry，并且做到每个概念都有一个应用场景来解释其意义所在。</p>
+<p>写到后面才发现其实 webpack 官网的教程已经很详细了，并且有相应的中文文档，帮助初学者快速上手，也省去了去网上找一些良莠不齐教程的时间。</p>
+<h2 id="参考资料。"><a href="#参考资料。" class="headerlink" title="参考资料。"></a>参考资料。</h2><ul>
+<li><a href="https://doc.webpack-china.org/guides/" target="_blank" rel="external">官方文档</a></li>
+<li><a href="https://segmentfault.com/a/1190000006178770#articleHeader3" target="_blank" rel="external">入门 Webpack，看这篇就够了</a></li>
+<li><a href="https://github.com/jantimon/html-webpack-plugin/issues/218" target="_blank" rel="external">html-webpack-plugin 插件实现多入口多 html 的疑惑</a></li>
+</ul>
 
           
         
