@@ -267,6 +267,248 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/事件类型-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歌顿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歌顿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/23/事件类型-1/" itemprop="url">
+                  事件类型总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T20:28:46+08:00">
+                2017-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>事件本质： <strong>交互瞬间</strong>。</p>
+<p>事件表示：<strong>每个事件都由基于Event 接口的一个对象表示</strong></p>
+<h3 id="UI事件"><a href="#UI事件" class="headerlink" title="UI事件"></a>UI事件</h3><ul>
+<li><p>定义：不一定与用户操作有关的。。呸。。</p>
+</li>
+<li><p>load事件：<strong>要想向DOM中添加一个新元素，就得确定页面加载完毕，因为防止在页面加载完毕前操作 document.body 导致错误。</strong></p>
+<ul>
+<li><p>window/document？</p>
+</li>
+<li><p>img：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">document.body.appendChild(image);</div><div class="line">image.src = &quot;smile.gif&quot;;    // 新图像元素只要设置了 src 属性就开始下载，</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>unload：在文档被完全卸载后触发，一般利用于清除引用，避免内存泄漏</p>
+</li>
+<li><p>resize：<em>The document view has been resized.(window对象上发生) </em></p>
+</li>
+<li><p>scroll：<em>The document view or an element has been scrolled.(window对象上发生)</em></p>
+</li>
+</ul>
+<h3 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h3><ul>
+<li><p>focus：元素获得焦点（不会冒泡</p>
+</li>
+<li><p>blur：元素失去焦点（不会冒泡</p>
+</li>
+</ul>
+<h3 id="鼠标与滚轮事件"><a href="#鼠标与滚轮事件" class="headerlink" title="鼠标与滚轮事件"></a>鼠标与滚轮事件</h3><ul>
+<li><p>click：在元素上按下并释放任意鼠标按键、回车键</p>
+</li>
+<li><p>mousedown：在元素上按下任意鼠标按钮</p>
+</li>
+<li><p>mouseup：在元素上释放任意鼠标按键</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">单击事件：mousedown -&gt; mouseup -&gt; click</div></pre></td></tr></table></figure>
+<ul>
+<li>dbclick：在元素上双击鼠标按钮<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">双击事件：mousedown -&gt; mouseup -&gt; click -&gt; mousedown -&gt; mouseup -&gt; click -&gt; dbclick</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>mouseout: 指针移出元素，或者移到它的子元素上</li>
+<li><p>mouseover：指针移到有事件监听的元素或者它的子元素内 </p>
+<ul>
+<li><strong>区别：out呢，是 target 元素是本身， relatedTarget 是别的元素。 over 正相反。</strong> </li>
+</ul>
+</li>
+<li><p>鼠标坐标：</p>
+<ul>
+<li><p>视图窗口：event.clientx</p>
+</li>
+<li><p>页面： event.pageX</p>
+</li>
+<li><p>屏幕：event.screenX</p>
+</li>
+</ul>
+</li>
+<li><p>修改键：</p>
+<ul>
+<li>event.shiftKey、ctrl、alt </li>
+</ul>
+</li>
+<li><p>鼠标按钮：button 属性值。左右键：1/2/0</p>
+</li>
+<li><p>鼠标滚轮：mousewheel</p>
+<ul>
+<li>event.wheelDelta（+、-用来判断方向，数值不用关心）</li>
+</ul>
+</li>
+<li><p>触摸设备：移动端以后再看。</p>
+</li>
+</ul>
+<h3 id="键盘与文本事件"><a href="#键盘与文本事件" class="headerlink" title="键盘与文本事件"></a>键盘与文本事件</h3><ul>
+<li><p>虽然所有元素都支持，但一般用户通过文本框输入才使用。</p>
+</li>
+<li><p>keydown：按下任意按键</p>
+</li>
+<li><p>keypress：除 Shift, Fn, CapsLock 外任意键被按住. (连续触发)</p>
+</li>
+<li>keyup：释放任意按键</li>
+<li><p>input：</p>
+<ul>
+<li><p>变动： <a href="https://developer.mozilla.org/en-US/docs/Web/Events/input" target="_blank" rel="external">input</a> </p>
+</li>
+<li><p><strong>以下描述全部废弃</strong></p>
+</li>
+<li><p>跟keypress 区别是：一是只有可编辑区域才能出发。二是只有在用户按下能够输入实际字符的键才会被触发。</p>
+</li>
+<li><p>因此主要考虑是字符，可以通过 evnet.data 获取用户输入的字符而非字符编码。换句话说，用户在没有按上档键情况下按 s 键，data 值就是 “s”，按下上档键后就是 “S”.   <em>懵逼</em></p>
+</li>
+</ul>
+</li>
+<li>键码：<strong>envet.keycode</strong> 。它属性的值与 ASCII 码中对应小写字母或者数字的编码相同。而其他非字符键的键码有图。。</li>
+</ul>
+<h3 id="变动事件"><a href="#变动事件" class="headerlink" title="变动事件"></a>变动事件</h3><p><strong>！昨晚才看的变动事件，今天在 msn 上看时已经被废弃了，改用  MutationObserver 方案。过了5年变动就这么大了。</strong></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events" target="_blank" rel="external">MSN</a></p>
+<p> <a href="https://www.w3.org/TR/uievents/#legacy-mutationevent-events" target="_blank" rel="external">W3C</a></p>
+<h3 id="HTML5事件"><a href="#HTML5事件" class="headerlink" title="HTML5事件"></a>HTML5事件</h3><ul>
+<li><p>contextmenu：右键菜单</p>
+</li>
+<li><p>beforeunload：window，document 及其资源即将被卸载。</p>
+</li>
+<li>DOMContentLoaded： <strong>废弃</strong></li>
+<li>hashchange vs location ： URL has changed</li>
+<li>readystatechange(跳过)</li>
+<li>pageshow/pagehide（跳过）</li>
+</ul>
+<h3 id="内存和性能"><a href="#内存和性能" class="headerlink" title="内存和性能"></a>内存和性能</h3><p>背景：在 js 中，添加到页面上的事件处理程序都将直接关系到页面的整体性能。导致这问题有两点原因：一是每个函数都是对象，都会占用内存，内存的对象越多，性能越差。二是必须提前指定所有事件处理程序而导致DOM 访问次数增加，会延迟整个页面的交互就绪时间。</p>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><ul>
+<li>做法简单来说：只指定一个事件处理程序，就可以管理某一类型的所有事件。比如说 click 事件会一直冒泡到 document 层次。</li>
+<li><p>例子如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;ul id=&quot;myLinks&quot;&gt;</div><div class="line">        &lt;li id=&quot;goSomewhere&quot;&gt;Go somewhere&lt;/li&gt;</div><div class="line">        &lt;li id=&quot;doSomething&quot;&gt;Do something&lt;/li&gt;</div><div class="line">        &lt;li id=&quot;sayHi&quot;&gt;Say hi&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    (function()&#123;</div><div class="line">        var list = document.getElementById(&quot;myLinks&quot;);</div><div class="line">        </div><div class="line">        EventUtil.addHandler(list, &quot;click&quot;, function(event)&#123;</div><div class="line">            event = EventUtil.getEvent(event);</div><div class="line">            var target = EventUtil.getTarget(event);</div><div class="line">        </div><div class="line">            switch(target.id)&#123;</div><div class="line">                case &quot;doSomething&quot;:</div><div class="line">                    document.title = &quot;I changed the document&apos;s title&quot;;</div><div class="line">                    break;</div><div class="line">        </div><div class="line">                case &quot;goSomewhere&quot;:</div><div class="line">                    location.href = &quot;http://www.wrox.com&quot;;</div><div class="line">                    break;</div><div class="line">        </div><div class="line">                case &quot;sayHi&quot;:</div><div class="line">                    alert(&quot;hi&quot;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;)();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">``` </div><div class="line">- 总结：只取得了一个DOM元素，只添加了一个事件处理程序。占用的内存更少，所有用到按钮的事件都适合采用事件委托事件。</div><div class="line"></div><div class="line"></div><div class="line">### 移除事件处理程序</div><div class="line">- 每当事件处理程序指定给定的元素时，运行中的浏览器和支持页面交互的 js 代码就建立了一种连接。**这种连接越多，页面执行起来就越慢。**所以前面可以用事件委托限制建立连接的数量，另外，也应该注意在不需要的时候移除事件处理程序。 **内存中留有那些过时不用的 “空事件处理程序” ，也是造成  web 应用程序内存与性能问题的主要原因。**</div><div class="line">- 有两种情况造成“空事件处理程序”</div><div class="line">    - removechild</div><div class="line">    - xxx.innerHTML = &quot;xxx&quot;;</div><div class="line">- 解决方法是手动移除事件处理程序：</div></pre></td></tr></table></figure>
+<p>  btn.onclick = function(){<br>  btn.onclick = null;<br>  xxx.innerHTML = “xxx”;</p>
+</li>
+</ul>
+<p>```</p>
+<ul>
+<li>另一种情况是卸载页面时，有些浏览器会没有清理干净事件处理程序，造成对象滞留在内存中。 <ul>
+<li>一般推荐的做法是在页面卸载之前，<strong>先通过 onload事件处理程序移除所有的事件处理程序。这样前面事件委托的优势就来啦，需要跟踪的 事件处理程序少了，移除就容易。</strong></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -436,7 +678,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
